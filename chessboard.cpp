@@ -36,21 +36,129 @@ void chessBoard::validateClick(int x, int y)
 
             break;
         case 'B':
-            if (currentPlayer==0) {
+            i=1;
+            while (x+i<8 && y+i<8) {
+                if (chesssquares[x+i][y+i]->isPiece()==false) {
+                    chesssquares[x+i][y+i]->setActive(selectColor);
+                } else {
+                    if (chesssquares[x+i][y+i]->getPiece()->get_player()!=currentPlayer) {
+                        chesssquares[x+i][y+i]->setActive(attackColor);
+                    }
+                    break;
+                }
+                i++;
+            }
 
-            } else {
+            i=1;
+            while (x+i<8 && y-i>=0) {
+                if (chesssquares[x+i][y-i]->isPiece()==false) {
+                    chesssquares[x+i][y-i]->setActive(selectColor);
+                } else {
+                    if (chesssquares[x+i][y-i]->getPiece()->get_player()!=currentPlayer) {
+                        chesssquares[x+i][y-i]->setActive(attackColor);
+                    }
+                    break;
+                }
+                i++;
+            }
 
+            i=1;
+            while (x-i>=0 && y+i<8) {
+                if (chesssquares[x-i][y+i]->isPiece()==false) {
+                    chesssquares[x-i][y+i]->setActive(selectColor);
+                } else {
+                    if (chesssquares[x-i][y+i]->getPiece()->get_player()!=currentPlayer) {
+                        chesssquares[x-i][y+i]->setActive(attackColor);
+                    }
+                    break;
+                }
+                i++;
+            }
+
+            i=1;
+            while (x-i>=0 && y-i<8) {
+                if (chesssquares[x-i][y-i]->isPiece()==false) {
+                    chesssquares[x-i][y-i]->setActive(selectColor);
+                } else {
+                    if (chesssquares[x-i][y-i]->getPiece()->get_player()!=currentPlayer) {
+                        chesssquares[x-i][y-i]->setActive(attackColor);
+                    }
+                    break;
+                }
+                i++;
             }
             break;
         case 'N':
+            //Koń
             if (x+2<8 && y+1<8) {
                 if (chesssquares[x+2][y+1]->isPiece()==false) {
                     chesssquares[x+2][y+1]->setActive(selectColor);
                 } else {
                     if (chesssquares[x+2][y+1]->getPiece()->get_player()!=currentPlayer) {
                         chesssquares[x+2][y+1]->setActive(attackColor);
-                    } else {
-                        chesssquares[x+2][y+1]->setActive(selectColor);
+                    }
+                }
+            }
+            if (x+2<8 && y-1>=0) {
+                if (chesssquares[x+2][y-1]->isPiece()==false) {
+                    chesssquares[x+2][y-1]->setActive(selectColor);
+                } else {
+                    if (chesssquares[x+2][y-1]->getPiece()->get_player()!=currentPlayer) {
+                        chesssquares[x+2][y-1]->setActive(attackColor);
+                    }
+                }
+            }
+            if (x-2>=0 && y+1<8) {
+                if (chesssquares[x-2][y+1]->isPiece()==false) {
+                    chesssquares[x-2][y+1]->setActive(selectColor);
+                } else {
+                    if (chesssquares[x-2][y+1]->getPiece()->get_player()!=currentPlayer) {
+                        chesssquares[x-2][y+1]->setActive(attackColor);
+                    }
+                }
+            }
+            if (x-2>=0 && y-1>=0) {
+                if (chesssquares[x-2][y-1]->isPiece()==false) {
+                    chesssquares[x-2][y-1]->setActive(selectColor);
+                } else {
+                    if (chesssquares[x-2][y-1]->getPiece()->get_player()!=currentPlayer) {
+                        chesssquares[x-2][y-1]->setActive(attackColor);
+                    }
+                }
+            }
+            if (x+1<8 && y+2<8) {
+                if (chesssquares[x+1][y+2]->isPiece()==false) {
+                    chesssquares[x+1][y+2]->setActive(selectColor);
+                } else {
+                    if (chesssquares[x+1][y+2]->getPiece()->get_player()!=currentPlayer) {
+                        chesssquares[x+1][y+2]->setActive(attackColor);
+                    }
+                }
+            }
+            if (x+1<8 && y-2>=0) {
+                if (chesssquares[x+1][y-2]->isPiece()==false) {
+                    chesssquares[x+1][y-2]->setActive(selectColor);
+                } else {
+                    if (chesssquares[x+1][y-2]->getPiece()->get_player()!=currentPlayer) {
+                        chesssquares[x+1][y-2]->setActive(attackColor);
+                    }
+                }
+            }
+            if (x-1>=0 && y+2<8) {
+                if (chesssquares[x-1][y+2]->isPiece()==false) {
+                    chesssquares[x-1][y+2]->setActive(selectColor);
+                } else {
+                    if (chesssquares[x-1][y+2]->getPiece()->get_player()!=currentPlayer) {
+                        chesssquares[x-1][y+2]->setActive(attackColor);
+                    }
+                }
+            }
+            if (x-1>=0 && y-2>=0) {
+                if (chesssquares[x-1][y-2]->isPiece()==false) {
+                    chesssquares[x-1][y-2]->setActive(selectColor);
+                } else {
+                    if (chesssquares[x-1][y-2]->getPiece()->get_player()!=currentPlayer) {
+                        chesssquares[x-1][y-2]->setActive(attackColor);
                     }
                 }
             }
@@ -209,18 +317,17 @@ void chessBoard::generateChessBoard()
     chessPiece *wqueen = new chessPiece(0,'Q',"Królowa");
     chessPiece *wking = new chessPiece(0,'K',"Król");
     chessPiece *wrook2 = new chessPiece(0,'R',"Wieża 2");
-    chessPiece *wknight2 = new chessPiece(0,'K',"Koń 2");
+    chessPiece *wknight2 = new chessPiece(0,'N',"Koń 2");
     chessPiece *wbishop2 = new chessPiece(0,'B',"Goniec 2");
     chessPiece **wpawns = new chessPiece*[8];
     for (int i=0; i<8;i++) {
         wpawns[i] = new chessPiece(0,'P',"Pionek");
         chesssquares[1][i]->setPiece(wpawns[i]);
-        chesssquares[1][i]->setActive(true);
     }
 
     //TEST
-    chessPiece *konik = new chessPiece(0,'N',"Test");
-    chesssquares[3][3]->setPiece(konik);;
+    chessPiece *test = new chessPiece(0,'B',"Test");
+    chesssquares[3][3]->setPiece(test);;
 
     chesssquares[0][0]->setPiece(wrook1);
     chesssquares[0][1]->setPiece(wknight1);
@@ -253,6 +360,7 @@ void chessBoard::generateChessBoard()
     chesssquares[7][5]->setPiece(bbishop2);
     chesssquares[7][6]->setPiece(bknight2);
     chesssquares[7][7]->setPiece(brook2);
+    resetSquares();
 }
 
 chessBoard::~chessBoard()
@@ -264,7 +372,10 @@ chessBoard::~chessBoard()
             }
         }
     }
-    qDebug() << "Chessboard object deleted.";
 
-    //TODO: Destruktor chesssquares
+    while (lost.isEmpty()) {
+        delete lost.takeFirst();
+    }
+
+    qDebug() << "Chessboard object deleted.";
 }
