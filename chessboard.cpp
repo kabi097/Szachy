@@ -3,7 +3,7 @@
 chessBoard::chessBoard(QWidget *parent) : QWidget(parent)
 {
     currentPlayer = 0;
-    setFixedSize(400,400);
+    setFixedSize(800,800);
     QGridLayout *gridlayout = new QGridLayout();
 
     selectColor = "blue";
