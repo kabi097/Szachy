@@ -25,7 +25,7 @@ public slots:
     void validateClick(int x, int y);
 
 private:
-    void resetSquares();    //Funkcja aktywująca tylko te pola na których znajdują się figury należące do currentPlayer
+    void resetSquares();    //Funkcja aktywująca tylko te pola na których znajdują się figury należące do currentPlayer.
     int currentPlayer;
     int sx;
     int sy;
