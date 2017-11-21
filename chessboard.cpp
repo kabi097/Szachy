@@ -76,7 +76,7 @@ void chessBoard::validateClick(int x, int y)
             }
 
             i=1;
-            while (x-i>=0 && y-i<8) {
+            while (x-i>=0 && y-i>=8) {
                 if (chesssquares[x-i][y-i]->isPiece()==false) {
                     chesssquares[x-i][y-i]->setActive(selectColor);
                 } else {
