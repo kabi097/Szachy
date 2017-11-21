@@ -25,8 +25,6 @@ public slots:
 
 private:
     void createMenus();
-
-
     bool saved;
     chessPlayer *player1;
     chessPlayer *player2;

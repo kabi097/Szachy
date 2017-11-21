@@ -10,7 +10,6 @@ class chessSquare : public QLabel
     Q_OBJECT
 public:
     chessSquare(int col, int row);
-    //bool getSelected();
     void setActive(bool active);
     void setActive(QString color);
     bool isPiece();
@@ -21,10 +20,6 @@ public:
 
 signals:
     void clicked(int x, int y);
-
-public slots:
-    //void select(chessPiece *piece);
-    //void select();
 
 protected:
     void mousePressEvent(QMouseEvent* event);
