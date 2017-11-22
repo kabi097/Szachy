@@ -33,205 +33,65 @@ void chessBoard::validateClick(int x, int y)
         int i = 1;
         switch (square->getPiece()->get_sign()) {
         case 'K':
-
+            checkActive(x+1,y-1);
+            checkActive(x+1,y);
+            checkActive(x+1,y+1);
+            checkActive(x,y+1);
+            checkActive(x,y-1);
+            checkActive(x-1,y+1);
+            checkActive(x-1,y);
+            checkActive(x-1,y+1);
             break;
         case 'B':
             i=1;
-            while (x+i<8 && y+i<8) {
-                if (chesssquares[x+i][y+i]->isPiece()==false) {
-                    chesssquares[x+i][y+i]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x+i][y+i]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x+i][y+i]->setActive(attackColor);
-                    }
-                    break;
-                }
-                i++;
-            }
-
+            while (checkActive(x+i,y+i)) i++;
             i=1;
-            while (x+i<8 && y-i>=0) {
-                if (chesssquares[x+i][y-i]->isPiece()==false) {
-                    chesssquares[x+i][y-i]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x+i][y-i]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x+i][y-i]->setActive(attackColor);
-                    }
-                    break;
-                }
-                i++;
-            }
-
+            while (checkActive(x+i,y-i)) i++;
             i=1;
-            while (x-i>=0 && y+i<8) {
-                if (chesssquares[x-i][y+i]->isPiece()==false) {
-                    chesssquares[x-i][y+i]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x-i][y+i]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x-i][y+i]->setActive(attackColor);
-                    }
-                    break;
-                }
-                i++;
-            }
-
+            while (checkActive(x-i,y+i)) i++;
             i=1;
-            while (x-i>=0 && y-i>=8) {
-                if (chesssquares[x-i][y-i]->isPiece()==false) {
-                    chesssquares[x-i][y-i]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x-i][y-i]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x-i][y-i]->setActive(attackColor);
-                    }
-                    break;
-                }
-                i++;
-            }
+            while (checkActive(x-i,y-i)) i++;
             break;
         case 'N':
             //Koń
-            if (x+2<8 && y+1<8) {
-                if (chesssquares[x+2][y+1]->isPiece()==false) {
-                    chesssquares[x+2][y+1]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x+2][y+1]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x+2][y+1]->setActive(attackColor);
-                    }
-                }
-            }
-            if (x+2<8 && y-1>=0) {
-                if (chesssquares[x+2][y-1]->isPiece()==false) {
-                    chesssquares[x+2][y-1]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x+2][y-1]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x+2][y-1]->setActive(attackColor);
-                    }
-                }
-            }
-            if (x-2>=0 && y+1<8) {
-                if (chesssquares[x-2][y+1]->isPiece()==false) {
-                    chesssquares[x-2][y+1]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x-2][y+1]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x-2][y+1]->setActive(attackColor);
-                    }
-                }
-            }
-            if (x-2>=0 && y-1>=0) {
-                if (chesssquares[x-2][y-1]->isPiece()==false) {
-                    chesssquares[x-2][y-1]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x-2][y-1]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x-2][y-1]->setActive(attackColor);
-                    }
-                }
-            }
-            if (x+1<8 && y+2<8) {
-                if (chesssquares[x+1][y+2]->isPiece()==false) {
-                    chesssquares[x+1][y+2]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x+1][y+2]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x+1][y+2]->setActive(attackColor);
-                    }
-                }
-            }
-            if (x+1<8 && y-2>=0) {
-                if (chesssquares[x+1][y-2]->isPiece()==false) {
-                    chesssquares[x+1][y-2]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x+1][y-2]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x+1][y-2]->setActive(attackColor);
-                    }
-                }
-            }
-            if (x-1>=0 && y+2<8) {
-                if (chesssquares[x-1][y+2]->isPiece()==false) {
-                    chesssquares[x-1][y+2]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x-1][y+2]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x-1][y+2]->setActive(attackColor);
-                    }
-                }
-            }
-            if (x-1>=0 && y-2>=0) {
-                if (chesssquares[x-1][y-2]->isPiece()==false) {
-                    chesssquares[x-1][y-2]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x-1][y-2]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x-1][y-2]->setActive(attackColor);
-                    }
-                }
-            }
+            checkActive(x+2,y+1);
+            checkActive(x+2,y-1);
+            checkActive(x-2,y+1);
+            checkActive(x+2,y-1);
+            checkActive(x+1,y+2);
+            checkActive(x+1,y-2);
+            checkActive(x-1,y+2);
+            checkActive(x-1,y-2);
             break;
         case 'Q':
-            if (currentPlayer==0) {
-
-            } else {
-
-            }
+            i=1;
+            while (checkActive(x+i,y)) i++;
+            i=1;
+            while (checkActive(x+i,y+i)) i++;
+            i=1;
+            while (checkActive(x+i,y-i)) i++;
+            i=1;
+            while (checkActive(x,y+i)) i++;
+            i=1;
+            while (checkActive(x,y-i)) i++;
+            i=1;
+            while (checkActive(x-i,y)) i++;
+            i=1;
+            while (checkActive(x-i,y+i)) i++;
+            i=1;
+            while (checkActive(x-i,y-i)) i++;
             break;
         case 'R':
             //Wieża
             //Zaznaczenie w górę
             i = 1;
-            while (x+i<8) {
-                if (chesssquares[x+i][y]->isPiece()==false) {
-                    chesssquares[x+i][y]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x+i][y]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x+i][y]->setActive(attackColor);
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                i++;
-            }
-            //Zaznaczenie w dół
+            while (checkActive(x+i,y)==true) i++;
             i = 1;
-            while (x-i>=0) {
-                if (chesssquares[x-i][y]->isPiece()==false) {
-                    chesssquares[x-i][y]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x-i][y]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x-i][y]->setActive(attackColor);
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                i++;
-            }
-            //Zaznaczenie w lewo
+            while (checkActive(x-i,y)==true) i++;
             i = 1;
-            while (y+i<8) {
-                if (chesssquares[x][y+i]->isPiece()==false) {
-                    chesssquares[x][y+i]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x][y+i]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x][y+i]->setActive(attackColor);
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                i++;
-            }
-            //Zaznaczenie w prawo
+            while (checkActive(x,y-i)==true) i++;
             i = 1;
-            while (y-i>=0) {
-                if (chesssquares[x][y-i]->isPiece()==false) {
-                    chesssquares[x][y-i]->setActive(selectColor);
-                } else {
-                    if (chesssquares[x][y-i]->getPiece()->get_player()!=currentPlayer) {
-                        chesssquares[x][y-i]->setActive(attackColor);
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                i++;
-            }
+            while (checkActive(x,y+i)==true) i++;
             break;
         default:
             //Pionek
@@ -309,6 +169,23 @@ void chessBoard::move()
 
 }
 
+bool chessBoard::checkActive(int x, int y)
+{
+    if (x>=0 && x<8 && y>=0 && y<8) {
+        if (chesssquares[x][y]->isPiece()==true) {
+            if (chesssquares[x][y]->getPiece()->get_player()!=currentPlayer) {
+                chesssquares[x][y]->setActive(attackColor);
+            }
+            return false;
+        } else {
+            chesssquares[x][y]->setActive(selectColor);
+            return true;
+        }
+    } else {
+        return false;
+    }
+}
+
 void chessBoard::generateChessBoard()
 {
     chessPiece *wrook1 = new chessPiece(0,'R',"Wieża 1");
@@ -326,7 +203,7 @@ void chessBoard::generateChessBoard()
     }
 
     //TEST
-    chessPiece *test = new chessPiece(0,'B',"Test");
+    chessPiece *test = new chessPiece(0,'Q',"Test");
     chesssquares[3][3]->setPiece(test);;
 
     chesssquares[0][0]->setPiece(wrook1);

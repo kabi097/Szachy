@@ -3,7 +3,6 @@
 
 #include <QDebug>
 #include "chesssquare.h"
-#include "chessplayer.h"
 #include <QGridLayout>
 #include <QList>
 
@@ -14,6 +13,7 @@ public:
     chessBoard(QWidget *parent = 0);
     void setCurrentPlayer(int player);
     void move();
+    bool checkActive(int x, int y);
     void generateChessBoard();
     ~chessBoard();
 

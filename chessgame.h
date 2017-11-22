@@ -2,7 +2,6 @@
 #define CHESSGAME_H
 
 #include "chessboard.h"
-#include "chessplayer.h"
 #include <QMainWindow>
 #include <QGridLayout>
 #include <QVBoxLayout>
@@ -26,8 +25,6 @@ public slots:
 private:
     void createMenus();
     bool saved;
-    chessPlayer *player1;
-    chessPlayer *player2;
     chessBoard *chessboard;
 };
 
