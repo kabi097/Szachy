@@ -188,7 +188,7 @@ bool chessBoard::checkActive(int x, int y)
     }
 }
 
-void chessBoard::generateChessBoard()
+void chessBoard::generateChessPieces()
 {
     chessPiece *wrook1 = new chessPiece(0,'R',"Wieża 1");
     chessPiece *wknight1 = new chessPiece(0,'N',"Koń 1");
@@ -204,9 +204,11 @@ void chessBoard::generateChessBoard()
         chesssquares[1][i]->setPiece(wpawns[i]);
     }
 
+    /*
     //TEST
     chessPiece *test = new chessPiece(0,'Q',"Test");
     chesssquares[3][3]->setPiece(test);;
+    */
 
     chesssquares[0][0]->setPiece(wrook1);
     chesssquares[0][1]->setPiece(wknight1);

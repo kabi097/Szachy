@@ -14,7 +14,7 @@ public:
     void setCurrentPlayer(int player);
     void move();
     bool checkActive(int x, int y);
-    void generateChessBoard();
+    void generateChessPieces();
     ~chessBoard();
 
 signals:

@@ -8,6 +8,8 @@
 #include <QMenuBar>
 #include <QMenu>
 #include <QMessageBox>
+#include <QStatusBar>
+#include <QApplication>
 
 class chessGame : public QMainWindow
 {
@@ -21,6 +23,9 @@ public:
 
 public slots:
     void close_window();
+
+protected:
+    void closeEvent(QCloseEvent *event);
 
 private:
     void createMenus();
