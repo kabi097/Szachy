@@ -11,22 +11,22 @@ chessSquare::chessSquare(int col, int row)
     //this->enabled = false;
     this->active = false;
 
-    //Ustawiamy kolor
+    //Ustawiamy domyślny kolor
     if (col%2==0) {
         if (row%2==0) {
            setColor(1);
-           defaultColor = "grey";
+           backgroundColor = "grey";
         } else {
            setColor(0);
-           defaultColor = "white";
+           backgroundColor = "white";
         }
     } else {
         if (row%2==0) {
            setColor(0);
-           defaultColor = "white";
+           backgroundColor = "white";
         } else {
            setColor(1);
-           defaultColor = "grey";
+           backgroundColor = "grey";
         }
     }
     qDebug() << "Chess square " << col << " " << row << " created.";
@@ -35,7 +35,7 @@ chessSquare::chessSquare(int col, int row)
 void chessSquare::setActive(bool active)
 {
     this->active = active;
-    setStyleSheet("QLabel { background-color : " + defaultColor + "; }");
+    setStyleSheet("QLabel { background-color : " + backgroundColor + "; }");
 }
 
 void chessSquare::setActive(QString color)

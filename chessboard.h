@@ -31,6 +31,8 @@ private:
     int sy;
     int dx;
     int dy;
+    QString whiteColor;
+    QString blackColor;
     QString selectColor;
     QString attackColor;
     chessSquare ***chesssquares;

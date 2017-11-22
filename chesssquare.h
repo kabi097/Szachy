@@ -16,6 +16,7 @@ public:
     chessPiece* getPiece();
     void setPiece(chessPiece* piece);
     void removePiece();
+    void setBackgroundColor(QString color);
     ~chessSquare();
 
 signals:
@@ -26,7 +27,7 @@ protected:
 
 private:
     bool active;
-    QString defaultColor;
+    QString backgroundColor;
     int color;
     int column;
     int row;

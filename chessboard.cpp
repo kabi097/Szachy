@@ -6,6 +6,8 @@ chessBoard::chessBoard(QWidget *parent) : QWidget(parent)
     setFixedSize(800,800);
     QGridLayout *gridlayout = new QGridLayout();
 
+    blackColor = "grey";
+    whiteColor = "white";
     selectColor = "blue";
     attackColor = "orange";
 
