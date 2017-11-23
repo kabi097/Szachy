@@ -99,6 +99,7 @@ void chessBoard::validateClick(int x, int y)
             //Pionek
             if (currentPlayer==0) {
                 if (x+1<8) {
+                    //DO POPRAWY
                     chesssquares[x+1][y]->setActive(selectColor);
                     if (y+1<8 && chesssquares[x+1][y+1]->isPiece()==true && chesssquares[x+1][y+1]->getPiece()->get_player()!=currentPlayer) {
                         chesssquares[x+1][y+1]->setActive(attackColor);
