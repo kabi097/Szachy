@@ -2,6 +2,7 @@
 #define CHESSGAME_H
 
 #include "chessboard.h"
+#include "chesspanel.h"
 #include <QMainWindow>
 #include <QGridLayout>
 #include <QVBoxLayout>
@@ -17,12 +18,13 @@ class chessGame : public QMainWindow
 
 public:
     chessGame(QWidget *parent = 0);
-    void play();
+    void play();    
 
     ~chessGame();
 
 public slots:
     void close_window();
+    void game_over();
 
 protected:
     void closeEvent(QCloseEvent *event);

@@ -32,7 +32,7 @@ void chessBoard::validateClick(int x, int y)
         sx = x;
         sy = y;
         //Walidacja ruchów
-        int i = 1;
+        int i;
         switch (square->getPiece()->get_sign()) {
         case 'K':
             checkActive(x+1,y-1);
@@ -97,10 +97,10 @@ void chessBoard::validateClick(int x, int y)
             break;
         default:
             //Pionek
+            //Funkcja checkActive() nie może zostać użyta, ponieważ pionek posiada różne reguły dla przemieszczania i atakowania.
             if (currentPlayer==0) {
                 if (x+1<8) {
-                    //DO POPRAWY
-                    chesssquares[x+1][y]->setActive(selectColor);
+                    if (chesssquares[x+1][y]->isPiece()==false) chesssquares[x+1][y]->setActive(selectColor);
                     if (y+1<8 && chesssquares[x+1][y+1]->isPiece()==true && chesssquares[x+1][y+1]->getPiece()->get_player()!=currentPlayer) {
                         chesssquares[x+1][y+1]->setActive(attackColor);
                     }
@@ -113,7 +113,7 @@ void chessBoard::validateClick(int x, int y)
                 }
             } else {
                 if (x-1>=0) {
-                    chesssquares[x-1][y]->setActive(selectColor);
+                    if (chesssquares[x-1][y]->isPiece()==false) chesssquares[x-1][y]->setActive(selectColor);
                     if (y+1<8 && chesssquares[x-1][y+1]->isPiece()==true && chesssquares[x-1][y+1]->getPiece()->get_player()!=currentPlayer) {
                         chesssquares[x-1][y+1]->setActive(attackColor);
                     }
@@ -167,6 +167,8 @@ void chessBoard::move()
     //Zmiana gracza
     if (currentPlayer==0) currentPlayer=1;
     else currentPlayer=0;
+
+    emit selectedPlayer(currentPlayer);
 
     sourcePiece->nextMove();
 

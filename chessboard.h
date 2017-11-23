@@ -20,6 +20,7 @@ public:
 signals:
     void selectedPiece(int x, int y, chessPiece* piece);
     void selectedMove(int x, int y);
+    void selectedPlayer(int player);
 
 public slots:
     void validateClick(int x, int y);

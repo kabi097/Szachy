@@ -12,5 +12,7 @@
         <file>Images/king_black.svg</file>
         <file>Images/bishop_white.svg</file>
         <file>Images/bishop_black.svg</file>
+        <file>Images/profile_white.png</file>
+        <file>Images/profile_black.png</file>
     </qresource>
 </RCC>

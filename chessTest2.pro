@@ -28,13 +28,15 @@ SOURCES += \
         chessgame.cpp \
     chessboard.cpp \
     chesssquare.cpp \
-    chesspiece.cpp
+    chesspiece.cpp \
+    chesspanel.cpp
 
 HEADERS += \
         chessgame.h \
     chessboard.h \
     chesssquare.h \
-    chesspiece.h
+    chesspiece.h \
+    chesspanel.h
 
 RESOURCES += \
     images.qrc

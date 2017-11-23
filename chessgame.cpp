@@ -11,22 +11,29 @@ chessGame::chessGame(QWidget *parent)
     QHBoxLayout *layout = new QHBoxLayout();
 
     layout->addStretch();
+
     chessboard = new chessBoard();
     chessboard->generateChessPieces();
     layout->addWidget(chessboard);
+
+    layout->addSpacing(15);
+
+    chessPanel *panel = new chessPanel();
+    layout->addWidget(panel);
+
     layout->addStretch();
 
+    QWidget *content = new QWidget();
+    content->setLayout(layout);
+    setCentralWidget(content);
 
+    //Menu i paski
     QMenu *filemenu = menuBar()->addMenu("Plik");
     QAction *closeAction = new QAction(QIcon::fromTheme("application-exit"), "Zamknij",this);
     closeAction->setShortcut(QKeySequence::Quit);
     closeAction->setStatusTip("Kliknij by zamknąć grę");
     filemenu->addAction(closeAction);
     connect(closeAction, SIGNAL(triggered(bool)), this, SLOT(close_window()));
-
-    QWidget *content = new QWidget();
-    content->setLayout(layout);
-    setCentralWidget(content);
 }
 
 
@@ -67,6 +74,11 @@ void chessGame::close_window()
             break;
         }
     }
+}
+
+void chessGame::game_over()
+{
+
 }
 
 void chessGame::createMenus()
