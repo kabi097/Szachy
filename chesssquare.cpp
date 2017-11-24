@@ -2,7 +2,7 @@
 
 chessSquare::chessSquare(int col, int row)
 {
-    setFixedSize(100,100);
+    setFixedSize(50,50);
     setScaledContents(true);
     this->column = col;
     this->row = row;

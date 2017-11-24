@@ -4,7 +4,7 @@ chessGame::chessGame(QWidget *parent)
     : QMainWindow(parent)
 {
     setWindowTitle("Szachy");
-    setMinimumSize(1000,900);
+    setMinimumSize(700,400);
 
     saved = true;
 
@@ -73,6 +73,8 @@ void chessGame::close_window()
         default:
             break;
         }
+    } else {
+        QApplication::quit();
     }
 }
 

@@ -3,7 +3,7 @@
 chessBoard::chessBoard(QWidget *parent) : QWidget(parent)
 {
     currentPlayer = 0;
-    setFixedSize(800,800);
+    setFixedSize(400,400);
     QGridLayout *gridlayout = new QGridLayout();
 
     blackColor = "grey";
@@ -159,6 +159,10 @@ void chessBoard::move()
     chessPiece *sourcePiece = chesssquares[sx][sy]->getPiece();
     chesssquares[sx][sy]->removePiece();
     if (chesssquares[dx][dy]->isPiece()==true) {
+        if (chesssquares[dx][dy]->getPiece()->get_sign()=='K') {
+            //Szach mat
+            emit gameOver(currentPlayer);
+        }
         lost << chesssquares[dx][dy]->getPiece();
         chesssquares[dx][dy]->removePiece();
     }
