@@ -4,7 +4,7 @@ chessGame::chessGame(QWidget *parent)
     : QMainWindow(parent)
 {
     setWindowTitle("Szachy");
-    setMinimumSize(700,400);
+    //setMinimumSize(700,400);
 
     saved = true;
 
@@ -12,8 +12,11 @@ chessGame::chessGame(QWidget *parent)
 
     layout->addStretch();
 
+    //TODO: Przenieść do osobnej funkcji
     chessboard = new chessBoard();
     chessboard->generateChessPieces();
+    connect(chessboard,SIGNAL(checkMate(int)),this,SLOT(game_over(int)));
+
     layout->addWidget(chessboard);
 
     layout->addSpacing(15);
@@ -21,7 +24,7 @@ chessGame::chessGame(QWidget *parent)
     chessPanel *panel = new chessPanel();
     layout->addWidget(panel);
 
-    layout->addStretch();
+    //layout->addStretch();
 
     QWidget *content = new QWidget();
     content->setLayout(layout);
@@ -78,8 +81,18 @@ void chessGame::close_window()
     }
 }
 
-void chessGame::game_over()
+void chessGame::game_over(int player)
 {
+    //koniec gry
+    QMessageBox gameover_info;
+    gameover_info.setText("Koniec gry.");
+    if (player == 0) {
+        gameover_info.setInformativeText("Wygrał gracz biały.");
+    } else {
+        gameover_info.setInformativeText("Wygrał gracz czarny.");
+    }
+    gameover_info.exec();
+    chessboard->blockAllSquares();
 
 }
 

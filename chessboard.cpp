@@ -131,7 +131,6 @@ void chessBoard::validateClick(int x, int y)
         dx = x;
         dy = y;
         move();
-        resetSquares();
     }
 }
 
@@ -161,7 +160,8 @@ void chessBoard::move()
     if (chesssquares[dx][dy]->isPiece()==true) {
         if (chesssquares[dx][dy]->getPiece()->get_sign()=='K') {
             //Szach mat
-            emit gameOver(currentPlayer);
+            emit checkMate(currentPlayer);
+            return;
         }
         lost << chesssquares[dx][dy]->getPiece();
         chesssquares[dx][dy]->removePiece();
@@ -175,6 +175,7 @@ void chessBoard::move()
     emit selectedPlayer(currentPlayer);
 
     sourcePiece->nextMove();
+    resetSquares();
 
 }
 
@@ -249,6 +250,15 @@ void chessBoard::generateChessPieces()
     chesssquares[7][6]->setPiece(bknight2);
     chesssquares[7][7]->setPiece(brook2);
     resetSquares();
+}
+
+void chessBoard::blockAllSquares()
+{
+    for (int i=0; i<8; i++) {
+        for (int j=0; j<8; j++) {
+            chesssquares[i][j]->setActive(false);
+        }
+    }
 }
 
 chessBoard::~chessBoard()

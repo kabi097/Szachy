@@ -24,7 +24,7 @@ public:
 
 public slots:
     void close_window();
-    void game_over();
+    void game_over(int player);
 
 protected:
     void closeEvent(QCloseEvent *event);

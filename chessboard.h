@@ -14,13 +14,14 @@ public:
     void setCurrentPlayer(int player);  //Ustawia numer aktualnego gracza
     bool checkActive(int x, int y);     //Funkcja sprawdza czy dane pola można zaznaczyć i jeśli tak - zaznacza
     void generateChessPieces();         //Generuje pionki na szachownicy
+    void blockAllSquares();
     ~chessBoard();
 
 signals:
     void selectedPiece(int x, int y, chessPiece* piece);
     void selectedMove(int x, int y);
     void selectedPlayer(int player);
-    void gameOver(int player);
+    void checkMate(int player);
 
 public slots:
     void validateClick(int x, int y);
