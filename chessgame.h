@@ -3,6 +3,7 @@
 
 #include "chessboard.h"
 #include "chesspanel.h"
+#include "chesssettings.h"
 #include <QMainWindow>
 #include <QGridLayout>
 #include <QVBoxLayout>

@@ -98,5 +98,5 @@ void chessGame::game_over(int player)
 
 void chessGame::createMenus()
 {
-
+    chessSettings setting;
 }
