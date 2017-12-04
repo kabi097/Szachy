@@ -3,8 +3,9 @@
 chessBoard::chessBoard(QWidget *parent) : QWidget(parent)
 {
     currentPlayer = 0;
-    setFixedSize(400,400);
+    //setFixedSize(64*8,64*8);
     QGridLayout *gridlayout = new QGridLayout();
+    gridlayout->setSpacing(0);
 
     blackColor = "grey";
     whiteColor = "white";
@@ -20,6 +21,7 @@ chessBoard::chessBoard(QWidget *parent) : QWidget(parent)
             connect(chesssquares[i][j],SIGNAL(clicked(int,int)),this,SLOT(validateClick(int,int)));
         }
     }
+    setDefaultColors();
     this->setLayout(gridlayout);
 }
 
@@ -251,6 +253,37 @@ void chessBoard::generateChessPieces()
     chesssquares[7][7]->setPiece(brook2);
     resetSquares();
 }
+
+void chessBoard::updateColors(QString newblack, QString newwhite, QString newselect, QString newattack)
+{
+    blackColor = newblack;
+    whiteColor = newwhite;
+    attackColor = newattack;
+    selectColor = newselect;
+}
+
+void chessBoard::setDefaultColors()
+{
+    for (int i=0; i<8; i++) {
+        for(int j=0; j<8;j++) {
+            if (i%2==0) {
+                if (j%2==0) {
+                   chesssquares[i][j]->setBackgroundColor(blackColor);
+                } else {
+                   chesssquares[i][j]->setBackgroundColor(whiteColor);
+                }
+            } else {
+                if (j%2==0) {
+                   chesssquares[i][j]->setBackgroundColor(whiteColor);
+                } else {
+                   chesssquares[i][j]->setBackgroundColor(blackColor);
+                }
+            }
+        }
+    }
+
+}
+
 
 void chessBoard::blockAllSquares()
 {

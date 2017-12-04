@@ -5,6 +5,7 @@
 #include "chesssquare.h"
 #include <QGridLayout>
 #include <QList>
+#include <QRect>
 
 class chessBoard : public QWidget
 {
@@ -14,6 +15,8 @@ public:
     void setCurrentPlayer(int player);  //Ustawia numer aktualnego gracza
     bool checkActive(int x, int y);     //Funkcja sprawdza czy dane pola można zaznaczyć i jeśli tak - zaznacza
     void generateChessPieces();         //Generuje pionki na szachownicy
+    void updateColors(QString newblack, QString newwhite, QString newselect, QString newattack);
+    void setDefaultColors();
     void blockAllSquares();
     ~chessBoard();
 

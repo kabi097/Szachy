@@ -24,7 +24,7 @@ chessGame::chessGame(QWidget *parent)
     chessPanel *panel = new chessPanel();
     layout->addWidget(panel);
 
-    //layout->addStretch();
+    layout->addStretch();
 
     QWidget *content = new QWidget();
     content->setLayout(layout);

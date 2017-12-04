@@ -36,9 +36,10 @@ chessPiece::chessPiece(int player_number, char sign, QString name)
     }
 }
 
-QString chessPiece::get_image()
+QPixmap chessPiece::get_image()
 {
-    return image_url;
+    image = QPixmap(image_url);
+    return image;
 }
 
 char chessPiece::get_sign()

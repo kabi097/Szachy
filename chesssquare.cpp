@@ -2,8 +2,15 @@
 
 chessSquare::chessSquare(int col, int row)
 {
-    setFixedSize(50,50);
+    //setFixedSize(50,50);
+    setMinimumSize(64,64);
     setScaledContents(true);
+
+    QSizePolicy size;
+    size.setWidthForHeight(true);
+    //size.setHeightForWidth(true);
+    setSizePolicy(size);
+
     this->column = col;
     this->row = row;
     this->chesspiece = nullptr;
@@ -69,6 +76,12 @@ void chessSquare::removePiece()
     chesspiece = nullptr;
     QPixmap empty(0,0);
     setPixmap(empty);
+}
+
+void chessSquare::setBackgroundColor(QString color)
+{
+    backgroundColor = color;
+    setStyleSheet("QLabel { background-color : " + color + "; }");
 }
 
 chessSquare::~chessSquare()

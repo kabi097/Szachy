@@ -29,14 +29,19 @@ SOURCES += \
     chessboard.cpp \
     chesssquare.cpp \
     chesspiece.cpp \
-    chesspanel.cpp
+    chesspanel.cpp \
+    chesssettings.cpp
 
 HEADERS += \
         chessgame.h \
     chessboard.h \
     chesssquare.h \
     chesspiece.h \
-    chesspanel.h
+    chesspanel.h \
+    chesssettings.h
 
 RESOURCES += \
     images.qrc
+
+FORMS += \
+    chesssettings.ui
