@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QColorDialog>
+#include "chessboard.h"
 
 namespace Ui {
 class chessSettings;
@@ -13,7 +14,7 @@ class chessSettings : public QDialog
     Q_OBJECT
 
 public:
-    explicit chessSettings(QWidget *parent = 0);
+    explicit chessSettings(chessBoard *board, QWidget *parent = 0);
     QString tempWhite;
     QString tempBlack;
     QString tempSelect;

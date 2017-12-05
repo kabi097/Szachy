@@ -30,19 +30,43 @@ chessGame::chessGame(QWidget *parent)
     content->setLayout(layout);
     setCentralWidget(content);
 
-    //Menu i paski
-    QMenu *filemenu = menuBar()->addMenu("Plik");
-    QAction *closeAction = new QAction(QIcon::fromTheme("application-exit"), "Zamknij",this);
-    closeAction->setShortcut(QKeySequence::Quit);
-    closeAction->setStatusTip("Kliknij by zamknąć grę");
-    filemenu->addAction(closeAction);
-    connect(closeAction, SIGNAL(triggered(bool)), this, SLOT(close_window()));
+    createMenus();
 }
 
 
 chessGame::~chessGame()
 {
 
+}
+
+void chessGame::new_game()
+{
+    if (saved==false) {
+        QMessageBox message;
+        message.setText("Gra nie została zapisana.");
+        message.setInformativeText("Czy chcesz zapisać stan gry?");
+        message.addButton(QMessageBox::Save);
+        message.addButton(QMessageBox::Discard);
+        message.addButton(QMessageBox::Cancel);
+        message.setDefaultButton(QMessageBox::Save);
+        int ret = message.exec();
+        switch (ret) {
+        case QMessageBox::Save:
+            //Save slot
+            break;
+        case QMessageBox::Discard:
+
+            break;
+        case QMessageBox::Cancel:
+
+            break;
+        default:
+            break;
+        }
+    } else {
+        saved = false;
+        chessboard->generateChessPieces();
+    }
 }
 
 
@@ -81,6 +105,24 @@ void chessGame::close_window()
     }
 }
 
+void chessGame::open_settings()
+{
+    chessSettings setting(chessboard);
+    if (setting.exec()==QDialog::Accepted) {
+        chessboard->updateColors(setting.tempBlack,setting.tempWhite,setting.tempSelect,setting.tempAttack);
+    }
+}
+
+void chessGame::about_qt()
+{
+    QMessageBox::aboutQt(this,"About Qt");
+}
+
+void chessGame::about_game()
+{
+    QMessageBox::about(this,"O grze", "Witamy!");
+}
+
 void chessGame::game_over(int player)
 {
     //koniec gry
@@ -98,5 +140,37 @@ void chessGame::game_over(int player)
 
 void chessGame::createMenus()
 {
-    chessSettings setting;
+    //Menu i paski
+    QMenu *filemenu = menuBar()->addMenu("Plik");
+
+    QAction *newgameAction = new QAction(QIcon::fromTheme("new-file"),"Nowa gra", this);
+    newgameAction->setStatusTip("Rozpocznij nową grę");
+    filemenu->addAction(newgameAction);
+    connect(newgameAction,SIGNAL(triggered(bool)),this,SLOT(new_game()));
+
+
+    QAction *settingsAction = new QAction(QIcon::fromTheme("preferences-system"),"Ustawienia", this);
+    settingsAction->setMenuRole(QAction::PreferencesRole);
+    newgameAction->setStatusTip("Otwórz ustawienia gry");
+    filemenu->addAction(settingsAction);
+    connect(settingsAction,SIGNAL(triggered(bool)),this,SLOT(open_settings()));
+
+    QAction *closeAction = new QAction(QIcon::fromTheme("application-exit"), "Zamknij",this);
+    closeAction->setShortcut(QKeySequence::Quit);
+    closeAction->setStatusTip("Kliknij by zamknąć grę");
+    closeAction->setMenuRole(QAction::QuitRole);
+    filemenu->addAction(closeAction);
+    connect(closeAction, SIGNAL(triggered(bool)), this, SLOT(close_window()));
+
+    QMenu *helpmenu = menuBar()->addMenu("Pomoc");
+
+    QAction *aboutQtAction = new QAction(QIcon::fromTheme("about"),"About Qt", this);
+    aboutQtAction->setMenuRole(QAction::AboutQtRole);
+    helpmenu->addAction(aboutQtAction);
+    connect(aboutQtAction,SIGNAL(triggered(bool)),this,SLOT(about_qt()));
+
+    QAction *aboutGameAction = new QAction(QIcon::fromTheme("about"),"About Game", this);
+    aboutGameAction->setMenuRole(QAction::AboutRole);
+    helpmenu->addAction(aboutGameAction);
+    connect(aboutGameAction,SIGNAL(triggered(bool)),this,SLOT(about_game()));
 }

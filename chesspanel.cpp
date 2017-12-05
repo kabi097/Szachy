@@ -50,5 +50,4 @@ chessPanel::chessPanel(QWidget *parent) : QWidget(parent)
 
 
     this->setLayout(layout);
-    qDebug() << "Tets";
 }
