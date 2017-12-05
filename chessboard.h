@@ -10,6 +10,7 @@
 class chessBoard : public QWidget
 {
     Q_OBJECT
+    friend class chessSettings;
 public:
     chessBoard(QWidget *parent = 0);
     void setCurrentPlayer(int player);  //Ustawia numer aktualnego gracza

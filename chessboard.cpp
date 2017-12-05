@@ -200,6 +200,13 @@ bool chessBoard::checkActive(int x, int y)
 
 void chessBoard::generateChessPieces()
 {
+
+    for (int i=0; i<8; i++) {
+        for (int j=0; j<8; j++) {
+            chesssquares[i][j]->removePiece();
+        }
+    }
+
     chessPiece *wrook1 = new chessPiece(0,'R',"Wieża 1");
     chessPiece *wknight1 = new chessPiece(0,'N',"Koń 1");
     chessPiece *wbishop1 = new chessPiece(0,'B',"Goniec 1");
@@ -260,6 +267,7 @@ void chessBoard::updateColors(QString newblack, QString newwhite, QString newsel
     whiteColor = newwhite;
     attackColor = newattack;
     selectColor = newselect;
+    setDefaultColors();
 }
 
 void chessBoard::setDefaultColors()

@@ -24,7 +24,11 @@ public:
     ~chessGame();
 
 public slots:
+    void new_game();
     void close_window();
+    void open_settings();
+    void about_qt();
+    void about_game();
     void game_over(int player);
 
 protected:

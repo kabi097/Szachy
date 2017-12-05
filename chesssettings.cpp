@@ -1,26 +1,31 @@
 #include "chesssettings.h"
 #include "ui_chesssettings.h"
 
-chessSettings::chessSettings(QWidget *parent) :
+chessSettings::chessSettings(chessBoard *board, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::chessSettings)
 {
+    tempSelect = board->selectColor;
+    tempAttack= board->attackColor;
+    tempBlack = board->blackColor;
+    tempWhite = board->whiteColor;
+
     ui->setupUi(this);
     ui->pushButtonWhite->setStyleSheet("QPushButton { background-color : " + tempWhite + "; }");
-    ui->pushButtonWhite->setAutoFillBackground(true);
-    ui->pushButtonWhite->setFlat(true);
+    //ui->pushButtonWhite->setAutoFillBackground(true);
+    //ui->pushButtonWhite->setFlat(true);
 
     ui->pushButtonBlack->setStyleSheet("QPushButton { background-color : " + tempBlack + "; }");
-    ui->pushButtonBlack->setAutoFillBackground(true);
-    ui->pushButtonBlack->setFlat(true);
+    //ui->pushButtonBlack->setAutoFillBackground(true);
+    //ui->pushButtonBlack->setFlat(true);
 
     ui->pushButtonSelect->setStyleSheet("QPushButton { background-color : " + tempSelect + "; }");
-    ui->pushButtonSelect->setAutoFillBackground(true);
-    ui->pushButtonSelect->setFlat(true);
+    //ui->pushButtonSelect->setAutoFillBackground(true);
+    //ui->pushButtonSelect->setFlat(true);
 
     ui->pushButtonAttack->setStyleSheet("QPushButton { background-color : " + tempAttack + "; }");
-    ui->pushButtonAttack->setAutoFillBackground(true);
-    ui->pushButtonAttack->setFlat(true);
+    //ui->pushButtonAttack->setAutoFillBackground(true);
+    //ui->pushButtonAttack->setFlat(true);
 }
 
 chessSettings::~chessSettings()
