@@ -29,7 +29,6 @@ chessGame::chessGame(QWidget *parent)
     QWidget *content = new QWidget();
     content->setLayout(layout);
     setCentralWidget(content);
-
     createMenus();
 }
 
