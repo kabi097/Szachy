@@ -7,6 +7,11 @@ chessBoard::chessBoard(QWidget *parent) : QWidget(parent)
     QGridLayout *gridlayout = new QGridLayout();
     gridlayout->setSpacing(0);
 
+    QSizePolicy size;
+    size.setWidthForHeight(true);
+    //size.setHeightForWidth(true);
+    setSizePolicy(size);
+
     blackColor = "grey";
     whiteColor = "white";
     selectColor = "blue";
@@ -22,6 +27,7 @@ chessBoard::chessBoard(QWidget *parent) : QWidget(parent)
         }
     }
     setDefaultColors();
+
     this->setLayout(gridlayout);
 }
 
@@ -206,6 +212,7 @@ void chessBoard::generateChessPieces()
             chesssquares[i][j]->removePiece();
         }
     }
+
 
     chessPiece *wrook1 = new chessPiece(0,'R',"Wieża 1");
     chessPiece *wknight1 = new chessPiece(0,'N',"Koń 1");

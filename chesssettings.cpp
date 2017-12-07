@@ -43,20 +43,20 @@ void chessSettings::on_pushButtonWhite_clicked()
 void chessSettings::on_pushButtonBlack_clicked()
 {
     QColor newColor = QColorDialog::getColor(QColor(tempBlack));
-    ui->pushButtonWhite->setStyleSheet("QPushButton { background-color : " + newColor.name() + "; }");
+    ui->pushButtonBlack->setStyleSheet("QPushButton { background-color : " + newColor.name() + "; }");
     tempBlack = newColor.name();
 }
 
 void chessSettings::on_pushButtonSelect_clicked()
 {
     QColor newColor = QColorDialog::getColor(QColor(tempSelect));
-    ui->pushButtonWhite->setStyleSheet("QPushButton { background-color : " + newColor.name() + "; }");
+    ui->pushButtonSelect->setStyleSheet("QPushButton { background-color : " + newColor.name() + "; }");
     tempSelect = newColor.name();
 }
 
 void chessSettings::on_pushButtonAttack_clicked()
 {
     QColor newColor = QColorDialog::getColor(QColor(tempAttack));
-    ui->pushButtonWhite->setStyleSheet("QPushButton { background-color : " + newColor.name() + "; }");
+    ui->pushButtonAttack->setStyleSheet("QPushButton { background-color : " + newColor.name() + "; }");
     tempAttack = newColor.name();
 }

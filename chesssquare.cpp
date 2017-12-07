@@ -6,10 +6,10 @@ chessSquare::chessSquare(int col, int row)
     setMinimumSize(64,64);
     setScaledContents(true);
 
-    QSizePolicy size;
-    size.setWidthForHeight(true);
-    //size.setHeightForWidth(true);
-    setSizePolicy(size);
+//    QSizePolicy size;
+//    size.setWidthForHeight(false);
+//    size.setHeightForWidth(true);
+//    setSizePolicy(size);
 
     this->column = col;
     this->row = row;
