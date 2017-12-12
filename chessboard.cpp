@@ -3,14 +3,9 @@
 chessBoard::chessBoard(QWidget *parent) : QWidget(parent)
 {
     currentPlayer = 0;
-    //setFixedSize(64*8,64*8);
+    setFixedSize(64*8,64*8);
     QGridLayout *gridlayout = new QGridLayout();
     gridlayout->setSpacing(0);
-
-    QSizePolicy size;
-    size.setWidthForHeight(true);
-    //size.setHeightForWidth(true);
-    setSizePolicy(size);
 
     blackColor = "grey";
     whiteColor = "white";
@@ -67,7 +62,7 @@ void chessBoard::validateClick(int x, int y)
             checkActive(x+2,y+1);
             checkActive(x+2,y-1);
             checkActive(x-2,y+1);
-            checkActive(x+2,y-1);
+            checkActive(x-2,y-1);
             checkActive(x+1,y+2);
             checkActive(x+1,y-2);
             checkActive(x-1,y+2);

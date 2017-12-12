@@ -5,6 +5,7 @@ chessSettings::chessSettings(chessBoard *board, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::chessSettings)
 {
+    setWindowTitle("Ustawienia gry");
     tempSelect = board->selectColor;
     tempAttack= board->attackColor;
     tempBlack = board->blackColor;
