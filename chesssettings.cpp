@@ -36,27 +36,35 @@ chessSettings::~chessSettings()
 void chessSettings::on_pushButtonWhite_clicked()
 {
     QColor newColor = QColorDialog::getColor(QColor(tempWhite));
-    ui->pushButtonWhite->setStyleSheet("QPushButton { background-color : " + newColor.name() + "; }");
-    tempWhite = newColor.name();
+    if (newColor.isValid()==true) {
+        ui->pushButtonWhite->setStyleSheet("QPushButton { background-color : " + newColor.name() + "; }");
+        tempWhite = newColor.name();
+    }
 }
 
 void chessSettings::on_pushButtonBlack_clicked()
 {
     QColor newColor = QColorDialog::getColor(QColor(tempBlack));
-    ui->pushButtonBlack->setStyleSheet("QPushButton { background-color : " + newColor.name() + "; }");
-    tempBlack = newColor.name();
+    if (newColor.isValid()==true) {
+        ui->pushButtonBlack->setStyleSheet("QPushButton { background-color : " + newColor.name() + "; }");
+        tempBlack = newColor.name();
+    }
 }
 
 void chessSettings::on_pushButtonSelect_clicked()
 {
     QColor newColor = QColorDialog::getColor(QColor(tempSelect));
-    ui->pushButtonSelect->setStyleSheet("QPushButton { background-color : " + newColor.name() + "; }");
-    tempSelect = newColor.name();
+    if (newColor.isValid()==true) {
+        ui->pushButtonSelect->setStyleSheet("QPushButton { background-color : " + newColor.name() + "; }");
+        tempSelect = newColor.name();
+    }
 }
 
 void chessSettings::on_pushButtonAttack_clicked()
 {
     QColor newColor = QColorDialog::getColor(QColor(tempAttack));
-    ui->pushButtonAttack->setStyleSheet("QPushButton { background-color : " + newColor.name() + "; }");
-    tempAttack = newColor.name();
+    if (newColor.isValid()==true) {
+        ui->pushButtonAttack->setStyleSheet("QPushButton { background-color : " + newColor.name() + "; }");
+        tempAttack = newColor.name();
+    }
 }

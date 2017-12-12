@@ -213,10 +213,6 @@ void chessBoard::generateChessPieces()
         }
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a95de708f92cb419190469c439486232d1a45d82
     chessPiece *wrook1 = new chessPiece(0,'R',"Wieża 1");
     chessPiece *wknight1 = new chessPiece(0,'N',"Koń 1");
     chessPiece *wbishop1 = new chessPiece(0,'B',"Goniec 1");

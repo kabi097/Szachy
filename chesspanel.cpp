@@ -48,7 +48,5 @@ chessPanel::chessPanel(QWidget *parent) : QWidget(parent)
 
     layout->addStretch();
 
-
     this->setLayout(layout);
-    qDebug() << "Tets";
 }
