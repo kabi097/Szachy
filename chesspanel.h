@@ -5,14 +5,21 @@
 #include <QDebug>
 #include <QVBoxLayout>
 #include <QLabel>
+#include "chessboard.h"
 
 class chessPanel : public QWidget
 {
     Q_OBJECT
 public:
-    explicit chessPanel(QWidget *parent = nullptr);
+    explicit chessPanel(chessBoard *board, QWidget *parent = nullptr);
+
+public slots:
+    void updateLost();
 
 private:
+    chessBoard *chessboard;
+    QGridLayout *lostWhite;
+    QGridLayout *lostBlack;
     QString player1;
     QString player2;
 

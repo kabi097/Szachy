@@ -1,7 +1,11 @@
 #include "chesspanel.h"
 
-chessPanel::chessPanel(QWidget *parent) : QWidget(parent)
+chessPanel::chessPanel(chessBoard *board, QWidget *parent) : QWidget(parent)
 {
+    chessboard = board;
+    lostBlack = new QGridLayout;
+    lostBlack = new QGridLayout;
+
     QVBoxLayout *layout = new QVBoxLayout;
 
     layout->addStretch();
@@ -27,6 +31,10 @@ chessPanel::chessPanel(QWidget *parent) : QWidget(parent)
     name1->setFont(QFont("Times", 14, QFont::Bold));
     layout->addWidget(name1);
 
+    //Figury stracone przez Gracza 1
+
+    //layout->addLayout(lostWhite);
+
     layout->addStretch();
 
     //Obrazek 2
@@ -46,7 +54,17 @@ chessPanel::chessPanel(QWidget *parent) : QWidget(parent)
     name2->setFont(QFont("Times", 14, QFont::Bold));
     layout->addWidget(name2);
 
+    //Figury stracone przez Gracza 1
+
+    //layout->addLayout(lostBlack);
+
+
     layout->addStretch();
 
     this->setLayout(layout);
+}
+
+void chessPanel::updateLost()
+{
+    chessboard->lost;
 }

@@ -6,11 +6,6 @@ chessSquare::chessSquare(int col, int row)
     setMinimumSize(64,64);
     setScaledContents(true);
 
-//    QSizePolicy size;
-//    size.setWidthForHeight(false);
-//    size.setHeightForWidth(true);
-//    setSizePolicy(size);
-
     this->column = col;
     this->row = row;
     this->chesspiece = nullptr;
@@ -36,7 +31,6 @@ chessSquare::chessSquare(int col, int row)
            backgroundColor = "grey";
         }
     }
-    qDebug() << "Chess square " << col << " " << row << " created.";
 }
 
 void chessSquare::setActive(bool active)
@@ -82,6 +76,18 @@ void chessSquare::setBackgroundColor(QString color)
 {
     backgroundColor = color;
     setStyleSheet("QLabel { background-color : " + color + "; }");
+}
+
+QString chessSquare::toChessNotation()
+{
+    QString square;
+    char x = column + 49;
+    char y = row + 65;
+    if (column>=0 && column<8 && row>=0 && row<8) {
+        square.append(x);
+        square.append(y);
+    }
+    return square;
 }
 
 chessSquare::~chessSquare()

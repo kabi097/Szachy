@@ -30,7 +30,7 @@ void chessBoard::validateClick(int x, int y)
 {
     chessSquare *square = chesssquares[x][y];
     if (square->isPiece()==true && square->getPiece()->get_player()==currentPlayer) {
-        resetSquares();
+        updateSquares();
         square->setActive(selectColor);
         sx = x;
         sy = y;
@@ -38,6 +38,7 @@ void chessBoard::validateClick(int x, int y)
         int i;
         switch (square->getPiece()->get_sign()) {
         case 'K':
+            //Król
             checkActive(x+1,y-1);
             checkActive(x+1,y);
             checkActive(x+1,y+1);
@@ -48,6 +49,7 @@ void chessBoard::validateClick(int x, int y)
             checkActive(x-1,y+1);
             break;
         case 'B':
+            //Goniec
             i=1;
             while (checkActive(x+i,y+i)) i++;
             i=1;
@@ -69,6 +71,7 @@ void chessBoard::validateClick(int x, int y)
             checkActive(x-1,y-2);
             break;
         case 'Q':
+            //Królowa
             i=1;
             while (checkActive(x+i,y)) i++;
             i=1;
@@ -100,7 +103,7 @@ void chessBoard::validateClick(int x, int y)
             break;
         default:
             //Pionek
-            //Funkcja checkActive() nie może zostać użyta, ponieważ pionek posiada różne reguły dla przemieszczania i atakowania.
+            //Funkcja checkActive() nie może zostać użyta, ponieważ pionek posiada inne reguły dla przemieszczania i inne dla atakowania.
             if (currentPlayer==0) {
                 if (x+1<8) {
                     if (chesssquares[x+1][y]->isPiece()==false) chesssquares[x+1][y]->setActive(selectColor);
@@ -137,7 +140,7 @@ void chessBoard::validateClick(int x, int y)
     }
 }
 
-void chessBoard::resetSquares()
+void chessBoard::updateSquares()
 {
     for (int i=0; i<8; i++) {
         for (int j=0; j<8; j++) {
@@ -175,10 +178,12 @@ void chessBoard::move()
     if (currentPlayer==0) currentPlayer=1;
     else currentPlayer=0;
 
-    emit selectedPlayer(currentPlayer);
-
     sourcePiece->nextMove();
-    resetSquares();
+    history << chesssquares[sx][sy]->toChessNotation();
+    history << chesssquares[dx][dy]->toChessNotation();
+
+    emit nextMove();
+    updateSquares();
 
 }
 
@@ -259,7 +264,7 @@ void chessBoard::generateChessPieces()
     chesssquares[7][5]->setPiece(bbishop2);
     chesssquares[7][6]->setPiece(bknight2);
     chesssquares[7][7]->setPiece(brook2);
-    resetSquares();
+    updateSquares();
 }
 
 void chessBoard::updateColors(QString newblack, QString newwhite, QString newselect, QString newattack)
@@ -269,6 +274,23 @@ void chessBoard::updateColors(QString newblack, QString newwhite, QString newsel
     attackColor = newattack;
     selectColor = newselect;
     setDefaultColors();
+}
+
+void chessBoard::resetChessboard()
+{
+    setCurrentPlayer(0);
+
+    for (int i=0; i<8; i++) {
+        for(int j=0; j<8;j++) {
+            if (chesssquares[i][j]->isPiece()) {
+                delete chesssquares[i][j]->getPiece();
+            }
+        }
+    }
+
+    while (lost.isEmpty()==false) {
+        delete lost.takeFirst();
+    }
 }
 
 void chessBoard::setDefaultColors()
@@ -290,7 +312,6 @@ void chessBoard::setDefaultColors()
             }
         }
     }
-
 }
 
 
@@ -303,19 +324,12 @@ void chessBoard::blockAllSquares()
     }
 }
 
+void chessBoard::readFromText(QString line)
+{
+    //   ([1-9])([A-H])\s([1-9])([A-H])
+}
+
 chessBoard::~chessBoard()
 {
-    for (int i=0; i<8; i++) {
-        for(int j=0; j<8;j++) {
-            if (chesssquares[i][j]->isPiece()) {
-                delete chesssquares[i][j]->getPiece();
-            }
-        }
-    }
-
-    while (lost.isEmpty()) {
-        delete lost.takeFirst();
-    }
-
-    qDebug() << "Chessboard object deleted.";
+    resetChessboard();
 }

@@ -13,20 +13,9 @@ chessSettings::chessSettings(chessBoard *board, QWidget *parent) :
 
     ui->setupUi(this);
     ui->pushButtonWhite->setStyleSheet("QPushButton { background-color : " + tempWhite + "; }");
-    //ui->pushButtonWhite->setAutoFillBackground(true);
-    //ui->pushButtonWhite->setFlat(true);
-
     ui->pushButtonBlack->setStyleSheet("QPushButton { background-color : " + tempBlack + "; }");
-    //ui->pushButtonBlack->setAutoFillBackground(true);
-    //ui->pushButtonBlack->setFlat(true);
-
     ui->pushButtonSelect->setStyleSheet("QPushButton { background-color : " + tempSelect + "; }");
-    //ui->pushButtonSelect->setAutoFillBackground(true);
-    //ui->pushButtonSelect->setFlat(true);
-
     ui->pushButtonAttack->setStyleSheet("QPushButton { background-color : " + tempAttack + "; }");
-    //ui->pushButtonAttack->setAutoFillBackground(true);
-    //ui->pushButtonAttack->setFlat(true);
 }
 
 chessSettings::~chessSettings()

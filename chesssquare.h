@@ -17,6 +17,7 @@ public:
     void setPiece(chessPiece* piece);
     void removePiece();
     void setBackgroundColor(QString color);
+    QString toChessNotation();      //Funkcja konwertuje współrzędne liczbowe pola na współrzędne w notacji szachowej
     ~chessSquare();
 
 signals:
