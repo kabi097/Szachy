@@ -153,7 +153,6 @@ void chessBoard::updateSquares()
     }
 }
 
-
 void chessBoard::setCurrentPlayer(int player)
 {
     currentPlayer = player;
@@ -184,7 +183,6 @@ void chessBoard::move()
 
     emit nextMove();
     updateSquares();
-
 }
 
 bool chessBoard::checkActive(int x, int y)
@@ -314,7 +312,6 @@ void chessBoard::setDefaultColors()
     }
 }
 
-
 void chessBoard::blockAllSquares()
 {
     for (int i=0; i<8; i++) {
@@ -326,7 +323,27 @@ void chessBoard::blockAllSquares()
 
 void chessBoard::readFromText(QString line)
 {
-    //   ([1-9])([A-H])\s([1-9])([A-H])
+    if (line.contains(QRegExp("^([1-9])([A-Ha-h]).([1-9])([A-Ha-h])"))) {
+        int new_sx = line[0].digitValue()-1;
+        int new_sy;
+        if (line[1].isUpper()) {
+            new_sy = line[1].unicode()-65;
+        } else {
+            new_sy = line[1].unicode()-97;
+        }
+        validateClick(new_sx,new_sy);
+        int new_dx = line[3].digitValue()-1;
+        int new_dy;
+        if (line[4].isUpper()) {
+            new_dy = line[4].unicode()-65;
+        } else {
+            new_dy = line[4].unicode()-97;
+        }
+        qDebug() << new_sx << " " << new_sy << "-->" << new_dx << " " << new_dy;;
+        validateClick(new_dx,new_dy);
+    } else {
+        qDebug() << "Jest źle";
+    }
 }
 
 chessBoard::~chessBoard()

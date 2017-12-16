@@ -19,7 +19,6 @@ chessGame::chessGame(QWidget *parent)
     layout->addWidget(chessboard);
 
     layout->addSpacing(15);
-
     chessPanel *panel = new chessPanel(chessboard);
     layout->addWidget(panel);
 
@@ -57,26 +56,73 @@ void chessGame::save_game()
                 }
             }
             setWindowModified(false);
+            saved=true;
         }
+    }
+}
+
+void chessGame::saveAs_game()
+{
+    QString newfile = QFileDialog::getSaveFileName(this, "Zapisz");
+    QFile file(newfile);
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
+        //nie udało się otworzyć
+        //throw QString("Nie udało się otworzyć pliku");
+    } else {
+        currentFile = newfile;
+        QTextStream out(&file);
+
+        QStringList history = chessboard->history;
+
+        int counter=0;
+        for (int i=0; i<history.size(); i++) {
+            out << history.at(i) << " ";
+            counter++;
+            if (counter%2==0) {
+                out << endl;
+                counter=0;
+            }
+        }
+        setWindowModified(false);
+        saved=true;
     }
 }
 
 void chessGame::open_game()
 {
     if (saved==false) {
-        save_game();
-        chessboard->resetChessboard();
-        chessboard->generateChessPieces();
+        QMessageBox message;
+        message.setText("Gra nie została zapisana.");
+        message.setInformativeText("Czy chcesz zapisać stan gry?");
+        message.addButton(QMessageBox::Save);
+        message.addButton(QMessageBox::Discard);
+        message.addButton(QMessageBox::Cancel);
+        message.setDefaultButton(QMessageBox::Save);
+        int ret = message.exec();
+        switch (ret) {
+        case QMessageBox::Save:
+            save_game();
+            break;
+        case QMessageBox::Discard:
+            chessboard->resetChessboard();
+            chessboard->generateChessPieces();
+            saved = true;
+            break;
+        default:
+            break;
+        }
     }
-    currentFile = QFileDialog::getOpenFileName(this, "Otwórz");
-    QFile file(currentFile);
-    if (!file.open(QFile::ReadOnly | QFile::Text)) {
-        throw QString("Nie udało się otworzyć pliku");
-    } else {
-        QTextStream in(&file);
-        while (!in.atEnd()) {
-            QString line = in.readLine();
-            //process_line(line);
+    if (saved==true) {
+        currentFile = QFileDialog::getOpenFileName(this, "Otwórz");
+        QFile file(currentFile);
+        if (!file.open(QFile::ReadOnly | QFile::Text)) {
+            throw QString("Nie udało się otworzyć pliku");
+        } else {
+            QTextStream in(&file);
+            while (!in.atEnd()) {
+                QString line = in.readLine();
+                chessboard->readFromText(line);
+            }
         }
     }
 }
@@ -116,7 +162,9 @@ void chessGame::closeEvent(QCloseEvent *event) {
 
 void chessGame::close_window()
 {
-    if (saved!=true) {
+    if (saved==true) {
+        QApplication::quit();
+    } else {
         QMessageBox message;
         message.setText("Gra nie została zapisana.");
         message.setInformativeText("Czy chcesz zapisać stan gry?");
@@ -127,19 +175,14 @@ void chessGame::close_window()
         int ret = message.exec();
         switch (ret) {
         case QMessageBox::Save:
-
+            save_game();
             break;
         case QMessageBox::Discard:
             QApplication::quit();
             break;
-        case QMessageBox::Cancel:
-
-            break;
         default:
             break;
         }
-    } else {
-        QApplication::quit();
     }
 }
 
@@ -189,25 +232,41 @@ void chessGame::createMenus()
     QMenu *filemenu = menuBar()->addMenu("Plik");
 
     QAction *newgameAction = new QAction(QIcon::fromTheme("document-new"),"Nowa gra", this);
+    newgameAction->setShortcut(QKeySequence::New);
     newgameAction->setStatusTip("Rozpocznij nową grę");
     filemenu->addAction(newgameAction);
     connect(newgameAction,SIGNAL(triggered(bool)),this,SLOT(new_game()));
 
     QAction *openGameAction = new QAction(QIcon::fromTheme("document-open"),"Otwórz", this);
+    openGameAction->setShortcut(QKeySequence::Open);
     openGameAction->setStatusTip("Otwórz grę z pliku");
     filemenu->addAction(openGameAction);
     connect(openGameAction,SIGNAL(triggered(bool)),this,SLOT(open_game()));
 
+    filemenu->addSeparator();
+
     QAction *saveGameAction = new QAction(QIcon::fromTheme("document-save"),"Zapisz", this);
+    saveGameAction->setShortcut(QKeySequence::Save);
     saveGameAction->setStatusTip("Zapisz stan gry");
     filemenu->addAction(saveGameAction);
     connect(saveGameAction,SIGNAL(triggered(bool)),this,SLOT(save_game()));
 
+    QAction *saveAsGameAction = new QAction(QIcon::fromTheme("document-save-as"),"Zapisz jako", this);
+    saveAsGameAction->setShortcut(QKeySequence::SaveAs);
+    saveAsGameAction->setStatusTip("Zapisz stan gry");
+    filemenu->addAction(saveAsGameAction);
+    connect(saveAsGameAction,SIGNAL(triggered(bool)),this,SLOT(saveAs_game()));
+
+    filemenu->addSeparator();
+
     QAction *settingsAction = new QAction(QIcon::fromTheme("preferences-system"),"Ustawienia", this);
     settingsAction->setMenuRole(QAction::PreferencesRole);
+    settingsAction->setShortcut(QKeySequence::Preferences);
     newgameAction->setStatusTip("Otwórz ustawienia gry");
     filemenu->addAction(settingsAction);
     connect(settingsAction,SIGNAL(triggered(bool)),this,SLOT(open_settings()));
+
+    filemenu->addSeparator();
 
     QAction *closeAction = new QAction(QIcon::fromTheme("application-exit"), "Zamknij",this);
     closeAction->setShortcut(QKeySequence::Quit);

@@ -26,6 +26,7 @@ public:
 public slots:
     void new_game();
     void save_game();
+    void saveAs_game();
     void open_game();
     void close_window();
     void open_settings();
