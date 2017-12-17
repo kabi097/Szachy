@@ -8,10 +8,8 @@ chessSquare::chessSquare(int col, int row)
 
     this->column = col;
     this->row = row;
-    this->chesspiece = nullptr;
-    //this->selected = false;
-    //this->enabled = false;
-    this->active = false;
+    chesspiece = nullptr;
+    active = false;
     setStatusTip(this->toChessNotation());
 
     //Ustawiamy domyślny kolor

@@ -20,7 +20,6 @@ class chessGame : public QMainWindow
 
 public:
     chessGame(QWidget *parent = 0);
-    void play();
     ~chessGame();
 
 public slots:

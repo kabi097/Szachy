@@ -2,10 +2,10 @@
 
 chessPiece::chessPiece(int player_number, char sign, QString name)
 {
-    this->sign = sign;
-    this->player = player_number;
-    this->name = name;
-    this->moveNumber = 0;
+    sign = sign;
+    player = player_number;
+    name = name;
+    moveNumber = 0;
 
     QString player_name;
     if (player==1) {

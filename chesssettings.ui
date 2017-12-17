@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Ustawienia gry</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
@@ -102,21 +102,21 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QRadioButton" name="radioButton_4">
+      <widget class="QRadioButton" name="radioButtonGreen">
        <property name="text">
         <string>Zestaw 4</string>
        </property>
       </widget>
      </item>
      <item row="3" column="0">
-      <widget class="QRadioButton" name="radioButton_3">
+      <widget class="QRadioButton" name="radioButtonBlue">
        <property name="text">
         <string>Zestaw 3</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QRadioButton" name="radioButton_2">
+      <widget class="QRadioButton" name="radioButtonOrange">
        <property name="text">
         <string>Zestaw 2</string>
        </property>
@@ -182,7 +182,7 @@
     </layout>
    </widget>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
