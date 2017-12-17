@@ -18,8 +18,8 @@ public slots:
 
 private:
     chessBoard *chessboard;
-    QGridLayout *lostWhite;
-    QGridLayout *lostBlack;
+    QGridLayout *lostWhiteLayout;
+    QGridLayout *lostBlackLayout;
     QString player1;
     QString player2;
 

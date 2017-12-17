@@ -12,6 +12,7 @@ chessSquare::chessSquare(int col, int row)
     //this->selected = false;
     //this->enabled = false;
     this->active = false;
+    setStatusTip(this->toChessNotation());
 
     //Ustawiamy domyślny kolor
     if (col%2==0) {
@@ -80,19 +81,14 @@ void chessSquare::setBackgroundColor(QString color)
 
 QString chessSquare::toChessNotation()
 {
-    QString square;
+    QString coordinates;
     char x = column + 49;
     char y = row + 65;
     if (column>=0 && column<8 && row>=0 && row<8) {
-        square.append(x);
-        square.append(y);
+        coordinates.append(x);
+        coordinates.append(y);
     }
-    return square;
-}
-
-chessSquare::~chessSquare()
-{
-    qDebug() << "Chess square " << column << row << " deleted.";
+    return coordinates;
 }
 
 void chessSquare::mousePressEvent(QMouseEvent* event) {
@@ -115,4 +111,9 @@ void chessSquare::setColor(int color)
         break;
     }
     this->color = color;
+}
+
+chessSquare::~chessSquare()
+{
+    qDebug() << "Chess square " << column << row << " deleted.";
 }

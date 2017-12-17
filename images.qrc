@@ -15,4 +15,10 @@
         <file>Images/profile_white.png</file>
         <file>Images/profile_black.png</file>
     </qresource>
+    <qresource prefix="/layouts">
+        <file>Images/layout_blue.png</file>
+        <file>Images/layout_green.png</file>
+        <file>Images/layout_orange.png</file>
+        <file>Images/layout_default.png</file>
+    </qresource>
 </RCC>

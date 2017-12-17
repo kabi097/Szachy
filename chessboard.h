@@ -20,14 +20,15 @@ public:
                                         //Ustawia nowy zestaw kolorów na szachownicy
     void resetChessboard();             //Czyści szachownicę - usuwa wszystkie pionki (również z listy), resetuje numer gracza
     void blockAllSquares();             //Funkcja ustawia wszystkie pola na nieaktywne
-    void readFromText(QString line);
+    void readFromText(QString line);    //Funkcja wczytująca ruchy z tekstu (zapisane w notacji szachowaj)
 
     QStringList history;                //Lista stringów przechowująca historię ruchów w notacji szachowej
     ~chessBoard();
 
 signals:
     void checkMate(int player);         //Szach mat
-    void nextMove();                    //Sygnał wysyłany każdorazowo po wykonaniu ruchu (w celu kontroli zmiennej saved)
+    void nextMove();                    //Sygnał wysyłany każdorazowo po wykonaniu ruchu
+    void newLost();                     //Sygnał wysyłany każdorazowo po zbiciu figury
 
 public slots:
     void validateClick(int x, int y);

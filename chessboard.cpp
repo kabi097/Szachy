@@ -10,7 +10,7 @@ chessBoard::chessBoard(QWidget *parent) : QWidget(parent)
     blackColor = "grey";
     whiteColor = "white";
     selectColor = "blue";
-    attackColor = "orange";
+    attackColor = "red";
 
     chesssquares = new chessSquare**[8];
     for (int i=0; i<8; i++) {
@@ -170,6 +170,7 @@ void chessBoard::move()
         }
         lost << chesssquares[dx][dy]->getPiece();
         chesssquares[dx][dy]->removePiece();
+        emit newLost();
     }
     chesssquares[dx][dy]->setPiece(sourcePiece);
 
@@ -339,9 +340,9 @@ void chessBoard::readFromText(QString line)
         } else {
             new_dy = line[4].unicode()-97;
         }
-        qDebug() << new_sx << " " << new_sy << "-->" << new_dx << " " << new_dy;;
         validateClick(new_dx,new_dy);
     } else {
+        //TODO
         qDebug() << "Jest źle";
     }
 }

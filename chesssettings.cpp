@@ -58,3 +58,8 @@ void chessSettings::on_pushButtonAttack_clicked()
         tempAttack = newColor.name();
     }
 }
+
+void chessSettings::on_radioButtonBlue_clicked()
+{
+    tempWhite =
+}

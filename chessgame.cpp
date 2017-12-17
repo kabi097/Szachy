@@ -4,8 +4,8 @@ chessGame::chessGame(QWidget *parent)
     : QMainWindow(parent)
 {
     setWindowTitle("[*] Szachy");
-
     saved = true;
+    statusBar();
 
     QHBoxLayout *layout = new QHBoxLayout();
 
@@ -20,6 +20,7 @@ chessGame::chessGame(QWidget *parent)
 
     layout->addSpacing(15);
     chessPanel *panel = new chessPanel(chessboard);
+    connect(chessboard,SIGNAL(newLost()), panel, SLOT(updateLost()));
     layout->addWidget(panel);
 
     layout->addStretch();
@@ -63,7 +64,7 @@ void chessGame::save_game()
 
 void chessGame::saveAs_game()
 {
-    QString newfile = QFileDialog::getSaveFileName(this, "Zapisz");
+    QString newfile = QFileDialog::getSaveFileName(this, tr("Zapisz"));
     QFile file(newfile);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
         //nie udało się otworzyć
@@ -111,8 +112,7 @@ void chessGame::open_game()
         default:
             break;
         }
-    }
-    if (saved==true) {
+    } else {
         currentFile = QFileDialog::getOpenFileName(this, "Otwórz");
         QFile file(currentFile);
         if (!file.open(QFile::ReadOnly | QFile::Text)) {
@@ -150,9 +150,9 @@ void chessGame::new_game()
             break;
         }
     } else {
-        saved = false;
         chessboard->resetChessboard();
         chessboard->generateChessPieces();
+        saved = true;
     }
 }
 
