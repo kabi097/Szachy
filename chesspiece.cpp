@@ -2,9 +2,9 @@
 
 chessPiece::chessPiece(int player_number, char sign, QString name)
 {
-    sign = sign;
-    player = player_number;
-    name = name;
+    this->sign = sign;
+    this->name = name;
+    this->player = player_number;
     moveNumber = 0;
 
     QString player_name;
@@ -36,23 +36,28 @@ chessPiece::chessPiece(int player_number, char sign, QString name)
     }
 }
 
-QPixmap chessPiece::get_image()
+QPixmap chessPiece::getImage()
 {
     image = QPixmap(image_url);
     return image;
 }
 
-char chessPiece::get_sign()
+char chessPiece::getSign()
 {
     return sign;
 }
 
-int chessPiece::get_player()
+QString chessPiece::getName()
+{
+    return name;
+}
+
+int chessPiece::getPlayer()
 {
     return player;
 }
 
-int chessPiece::get_moveNumber()
+int chessPiece::getMoveNumber()
 {
     return moveNumber;
 }

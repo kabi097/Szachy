@@ -21,4 +21,7 @@
         <file>Images/layout_orange.png</file>
         <file>Images/layout_default.png</file>
     </qresource>
+    <qresource prefix="/others">
+        <file>Images/arrow.png</file>
+    </qresource>
 </RCC>

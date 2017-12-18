@@ -29,14 +29,14 @@ chessBoard::chessBoard(QWidget *parent) : QWidget(parent)
 void chessBoard::validateClick(int x, int y)
 {
     chessSquare *square = chesssquares[x][y];
-    if (square->isPiece()==true && square->getPiece()->get_player()==currentPlayer) {
+    if (square->isPiece()==true && square->getPiece()->getPlayer()==currentPlayer) {
         updateSquares();
         square->setActive(selectColor);
         sx = x;
         sy = y;
         //Walidacja ruchów
         int i;
-        switch (square->getPiece()->get_sign()) {
+        switch (square->getPiece()->getSign()) {
         case 'K':
             //Król
             checkActive(x+1,y-1);
@@ -107,27 +107,27 @@ void chessBoard::validateClick(int x, int y)
             if (currentPlayer==0) {
                 if (x+1<8) {
                     if (chesssquares[x+1][y]->isPiece()==false) chesssquares[x+1][y]->setActive(selectColor);
-                    if (y+1<8 && chesssquares[x+1][y+1]->isPiece()==true && chesssquares[x+1][y+1]->getPiece()->get_player()!=currentPlayer) {
+                    if (y+1<8 && chesssquares[x+1][y+1]->isPiece()==true && chesssquares[x+1][y+1]->getPiece()->getPlayer()!=currentPlayer) {
                         chesssquares[x+1][y+1]->setActive(attackColor);
                     }
-                    if (y-1>=0 && chesssquares[x+1][y-1]->isPiece()==true && chesssquares[x+1][y-1]->getPiece()->get_player()!=currentPlayer) {
+                    if (y-1>=0 && chesssquares[x+1][y-1]->isPiece()==true && chesssquares[x+1][y-1]->getPiece()->getPlayer()!=currentPlayer) {
                         chesssquares[x+1][y-1]->setActive(attackColor);
                     }
                 }
-                if (chesssquares[x][y]->getPiece()->get_moveNumber()==0) {
+                if (chesssquares[x][y]->getPiece()->getMoveNumber()==0) {
                     if (chesssquares[x+2][y]->isPiece()==false) chesssquares[x+2][y]->setActive(selectColor);
                 }
             } else {
                 if (x-1>=0) {
                     if (chesssquares[x-1][y]->isPiece()==false) chesssquares[x-1][y]->setActive(selectColor);
-                    if (y+1<8 && chesssquares[x-1][y+1]->isPiece()==true && chesssquares[x-1][y+1]->getPiece()->get_player()!=currentPlayer) {
+                    if (y+1<8 && chesssquares[x-1][y+1]->isPiece()==true && chesssquares[x-1][y+1]->getPiece()->getPlayer()!=currentPlayer) {
                         chesssquares[x-1][y+1]->setActive(attackColor);
                     }
-                    if (y-1>=0 && chesssquares[x-1][y-1]->isPiece()==true && chesssquares[x-1][y-1]->getPiece()->get_player()!=currentPlayer) {
+                    if (y-1>=0 && chesssquares[x-1][y-1]->isPiece()==true && chesssquares[x-1][y-1]->getPiece()->getPlayer()!=currentPlayer) {
                         chesssquares[x-1][y-1]->setActive(attackColor);
                     }
                 }
-                if (chesssquares[x][y]->getPiece()->get_moveNumber()==0) {
+                if (chesssquares[x][y]->getPiece()->getMoveNumber()==0) {
                     if (chesssquares[x-2][y]->isPiece()==false) chesssquares[x-2][y]->setActive(selectColor);
                 }
             }
@@ -144,7 +144,7 @@ void chessBoard::updateSquares()
 {
     for (int i=0; i<8; i++) {
         for (int j=0; j<8; j++) {
-            if (chesssquares[i][j]->isPiece()==true && chesssquares[i][j]->getPiece()->get_player()==currentPlayer) {
+            if (chesssquares[i][j]->isPiece()==true && chesssquares[i][j]->getPiece()->getPlayer()==currentPlayer) {
                 chesssquares[i][j]->setActive(true);
             } else {
                 chesssquares[i][j]->setActive(false);
@@ -163,7 +163,7 @@ void chessBoard::move()
     chessPiece *sourcePiece = chesssquares[sx][sy]->getPiece();
     chesssquares[sx][sy]->removePiece();
     if (chesssquares[dx][dy]->isPiece()==true) {
-        if (chesssquares[dx][dy]->getPiece()->get_sign()=='K') {
+        if (chesssquares[dx][dy]->getPiece()->getSign()=='K') {
             //Szach mat
             emit checkMate(currentPlayer);
             return;
@@ -190,7 +190,7 @@ bool chessBoard::checkActive(int x, int y)
 {
     if (x>=0 && x<8 && y>=0 && y<8) {
         if (chesssquares[x][y]->isPiece()==true) {
-            if (chesssquares[x][y]->getPiece()->get_player()!=currentPlayer) {
+            if (chesssquares[x][y]->getPiece()->getPlayer()!=currentPlayer) {
                 chesssquares[x][y]->setActive(attackColor);
             }
             return false;

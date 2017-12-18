@@ -21,6 +21,7 @@ chessGame::chessGame(QWidget *parent)
     layout->addSpacing(15);
     chessPanel *panel = new chessPanel(chessboard);
     connect(chessboard,SIGNAL(newLost()), panel, SLOT(updateLost()));
+    connect(chessboard,SIGNAL(nextMove()), panel, SLOT(updateCurrentPlayer()));
     layout->addWidget(panel);
 
     layout->addStretch();
@@ -93,6 +94,7 @@ void chessGame::open_game()
 {
     if (saved==false) {
         QMessageBox message;
+        message.setWindowTitle("Ostrzeżenie");
         message.setText("Gra nie została zapisana.");
         message.setInformativeText("Czy chcesz zapisać stan gry?");
         message.addButton(QMessageBox::Save);
@@ -108,6 +110,7 @@ void chessGame::open_game()
             chessboard->resetChessboard();
             chessboard->generateChessPieces();
             saved = true;
+            open_game();
             break;
         default:
             break;
@@ -115,9 +118,7 @@ void chessGame::open_game()
     } else {
         currentFile = QFileDialog::getOpenFileName(this, "Otwórz");
         QFile file(currentFile);
-        if (!file.open(QFile::ReadOnly | QFile::Text)) {
-            throw QString("Nie udało się otworzyć pliku");
-        } else {
+        if (file.open(QFile::ReadOnly | QFile::Text)) {
             QTextStream in(&file);
             while (!in.atEnd()) {
                 QString line = in.readLine();
@@ -131,6 +132,7 @@ void chessGame::new_game()
 {
     if (saved==false) {
         QMessageBox message;
+        message.setWindowTitle("Ostrzeżenie");
         message.setText("Gra nie została zapisana.");
         message.setInformativeText("Czy chcesz zapisać stan gry?");
         message.addButton(QMessageBox::Save);
@@ -166,6 +168,7 @@ void chessGame::close_window()
         QApplication::quit();
     } else {
         QMessageBox message;
+        message.setWindowTitle("Ostrzeżenie");
         message.setText("Gra nie została zapisana.");
         message.setInformativeText("Czy chcesz zapisać stan gry?");
         message.addButton(QMessageBox::Save);
@@ -208,6 +211,7 @@ void chessGame::game_over(int player)
 {
     //koniec gry
     QMessageBox gameover_info;
+    gameover_info.setWindowTitle("Informacja");
     gameover_info.setText("Koniec gry.");
     if (player == 0) {
         gameover_info.setInformativeText("Wygrał gracz biały.");

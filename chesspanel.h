@@ -15,11 +15,14 @@ public:
 
 public slots:
     void updateLost();
+    void updateCurrentPlayer();
 
 private:
     chessBoard *chessboard;
     QGridLayout *lostWhiteLayout;
     QGridLayout *lostBlackLayout;
+    QLabel *arrowwhite;
+    QLabel *arrowblack;
     QString player1;
     QString player2;
 

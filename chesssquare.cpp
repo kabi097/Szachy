@@ -61,7 +61,8 @@ chessPiece* chessSquare::getPiece()
 void chessSquare::setPiece(chessPiece *piece)
 {
     this->chesspiece = piece;
-    setPixmap(chesspiece->get_image());
+    setPixmap(chesspiece->getImage());
+    setStatusTip(this->toChessNotation() + " - " + chesspiece->getName());
 }
 
 void chessSquare::removePiece()
@@ -69,6 +70,7 @@ void chessSquare::removePiece()
     chesspiece = nullptr;
     QPixmap empty(0,0);
     setPixmap(empty);
+    setStatusTip(this->toChessNotation());
 }
 
 void chessSquare::setBackgroundColor(QString color)
@@ -113,5 +115,5 @@ void chessSquare::setColor(int color)
 
 chessSquare::~chessSquare()
 {
-    qDebug() << "Chess square " << column << row << " deleted.";
+    //qDebug() << "Chess square " << column << row << " deleted.";
 }

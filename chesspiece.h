@@ -9,10 +9,11 @@ class chessPiece
 {
 public:
     chessPiece(int player_number, char sign, QString name = "");
-    QPixmap get_image();
-    char get_sign();
-    int get_player();
-    int get_moveNumber();
+    QPixmap getImage();
+    char getSign();
+    QString getName();
+    int getPlayer();
+    int getMoveNumber();
     void nextMove();
     ~chessPiece();
 
