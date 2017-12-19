@@ -17,7 +17,7 @@ public:
     void setPiece(chessPiece* piece);   //Ustawia figurę na polu
     void removePiece();                 //Usuwa figurę z pola
     void setBackgroundColor(QString color); //Ustawia nowy domyślny kolor tła
-    QString toChessNotation();          //Zwraca współrzędne w zapisane w notacji szachowej
+    QString toChessNotation();          //Zwraca współrzędne zapisane w notacji szachowej
     ~chessSquare();
 
 signals:

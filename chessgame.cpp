@@ -181,6 +181,7 @@ void chessGame::close_window()
         switch (ret) {
         case QMessageBox::Save:
             save_game();
+            QApplication::quit();
             break;
         case QMessageBox::Discard:
             QApplication::quit();
