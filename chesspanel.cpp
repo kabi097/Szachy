@@ -102,6 +102,26 @@ void chessPanel::updateLost()
     }
 }
 
+void chessPanel::clearLost()
+{
+    qDebug() << "Wchodzimy!!!!";
+    QLayoutItem *oldpiece;
+    while ((oldpiece = lostWhiteLayout->takeAt(0)) != 0) {
+        oldpiece->widget()->setParent(0);
+      delete oldpiece;
+    }
+
+    while ((oldpiece = lostBlackLayout->takeAt(0)) != 0) {
+      oldpiece->widget()->setParent(0);
+      delete oldpiece;
+    }
+}
+
+chessPanel::~chessPanel()
+{
+    clearLost();
+}
+
 void chessPanel::updateCurrentPlayer()
 {
     QPixmap empty(0,0);

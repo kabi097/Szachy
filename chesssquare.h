@@ -9,7 +9,7 @@ class chessSquare : public QLabel
 {
     Q_OBJECT
 public:
-    chessSquare(int col, int row);
+    chessSquare(int col, int row, QWidget *parent=nullptr);
     void setActive(bool active);        //Ustawia pole jako aktywne (w zależności od wartości active)
     void setActive(QString color);      //Ustawia pole jako aktywne i dodatkowo ustawia tymczasowy kolor tła
     bool isPiece();                     //Funkcja sprawdzająca czy na danym polu znajduje się figura

@@ -6,7 +6,6 @@ chessBoard::chessBoard(QWidget *parent) : QWidget(parent)
     setFixedSize(64*8,64*8);
     QGridLayout *gridlayout = new QGridLayout();
     gridlayout->setSpacing(0);
-
     blackColor = "grey";
     whiteColor = "white";
     selectColor = "blue";
@@ -220,10 +219,8 @@ void chessBoard::generateChessPieces()
     chessPiece *wrook2 = new chessPiece(0,'R',"Wieża 2");
     chessPiece *wknight2 = new chessPiece(0,'N',"Koń 2");
     chessPiece *wbishop2 = new chessPiece(0,'B',"Goniec 2");
-    chessPiece **wpawns = new chessPiece*[8];
     for (int i=0; i<8;i++) {
-        wpawns[i] = new chessPiece(0,'P',"Pionek");
-        chesssquares[1][i]->setPiece(wpawns[i]);
+        chesssquares[1][i]->setPiece(new chessPiece(0,'P',"Pionek"));
     }
 
     /*
@@ -240,10 +237,9 @@ void chessBoard::generateChessPieces()
     chesssquares[0][5]->setPiece(wbishop2);
     chesssquares[0][6]->setPiece(wknight2);
     chesssquares[0][7]->setPiece(wrook2);
-    chessPiece **bpawns = new chessPiece*[8];
+    //chessPiece **bpawns = new chessPiece*[8];
     for (int i=0; i<8;i++) {
-        bpawns[i] = new chessPiece(1,'P',"Pionek");
-        chesssquares[6][i]->setPiece(bpawns[i]);
+        chesssquares[6][i]->setPiece(new chessPiece(1,'P',"Pionek"));
     }
 
     chessPiece *brook1 = new chessPiece(1,'R',"Wieża 1");
@@ -350,4 +346,8 @@ void chessBoard::readFromText(QString line)
 chessBoard::~chessBoard()
 {
     resetChessboard();
+    for (int i=0; i<8; i++) {
+        delete [] chesssquares[i];
+    }
+    delete[] chesssquares;
 }

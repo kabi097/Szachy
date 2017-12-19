@@ -12,6 +12,8 @@ class chessPanel : public QWidget
     Q_OBJECT
 public:
     explicit chessPanel(chessBoard *board, QWidget *parent = nullptr);
+    void clearLost();
+    ~chessPanel();
 
 public slots:
     void updateLost();

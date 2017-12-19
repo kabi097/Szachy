@@ -42,6 +42,7 @@ private:
     QString currentFile;
     bool saved;
     chessBoard *chessboard;
+    chessPanel *panel;
 };
 
 #endif // CHESSGAME_H

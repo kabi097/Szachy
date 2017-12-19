@@ -1,6 +1,6 @@
 #include "chesssquare.h"
 
-chessSquare::chessSquare(int col, int row)
+chessSquare::chessSquare(int col, int row, QWidget *parent) : QLabel(parent)
 {
     //setFixedSize(50,50);
     setMinimumSize(64,64);

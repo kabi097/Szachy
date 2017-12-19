@@ -19,7 +19,7 @@ chessGame::chessGame(QWidget *parent)
     layout->addWidget(chessboard);
 
     layout->addSpacing(15);
-    chessPanel *panel = new chessPanel(chessboard);
+    panel = new chessPanel(chessboard);
     connect(chessboard,SIGNAL(newLost()), panel, SLOT(updateLost()));
     connect(chessboard,SIGNAL(nextMove()), panel, SLOT(updateCurrentPlayer()));
     layout->addWidget(panel);
@@ -109,6 +109,7 @@ void chessGame::open_game()
         case QMessageBox::Discard:
             chessboard->resetChessboard();
             chessboard->generateChessPieces();
+            panel->clearLost();
             saved = true;
             open_game();
             break;
@@ -147,6 +148,7 @@ void chessGame::new_game()
         case QMessageBox::Discard:
             chessboard->resetChessboard();
             chessboard->generateChessPieces();
+            panel->clearLost();
             break;
         default:
             break;
