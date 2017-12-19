@@ -53,6 +53,11 @@ bool chessSquare::isPiece()
     }
 }
 
+bool chessSquare::isActive()
+{
+    return active;
+}
+
 chessPiece* chessSquare::getPiece()
 {
     return chesspiece;

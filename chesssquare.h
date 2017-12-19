@@ -13,6 +13,7 @@ public:
     void setActive(bool active);        //Ustawia pole jako aktywne (w zależności od wartości active)
     void setActive(QString color);      //Ustawia pole jako aktywne i dodatkowo ustawia tymczasowy kolor tła
     bool isPiece();                     //Funkcja sprawdzająca czy na danym polu znajduje się figura
+    bool isActive();                    //Zwraca true albo false w zależności czy pole jest aktywne
     chessPiece* getPiece();             //Zwraca figurę z danego pola
     void setPiece(chessPiece* piece);   //Ustawia figurę na polu
     void removePiece();                 //Usuwa figurę z pola

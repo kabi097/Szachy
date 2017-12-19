@@ -159,6 +159,9 @@ void chessBoard::setCurrentPlayer(int player)
 
 void chessBoard::move()
 {
+    if (chesssquares[dx][dy]->isActive()==false) {
+        throw QString("Błąd! Podane współrzędne są niepoprawne.");
+    }
     chessPiece *sourcePiece = chesssquares[sx][sy]->getPiece();
     chesssquares[sx][sy]->removePiece();
     if (chesssquares[dx][dy]->isPiece()==true) {
@@ -204,7 +207,6 @@ bool chessBoard::checkActive(int x, int y)
 
 void chessBoard::generateChessPieces()
 {
-
     for (int i=0; i<8; i++) {
         for (int j=0; j<8; j++) {
             chesssquares[i][j]->removePiece();
@@ -338,8 +340,7 @@ void chessBoard::readFromText(QString line)
         }
         validateClick(new_dx,new_dy);
     } else {
-        //TODO
-        qDebug() << "Jest źle";
+        throw QString("Błąd! Niepoprawna zawartość pliku!");
     }
 }
 
