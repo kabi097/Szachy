@@ -238,13 +238,13 @@ void chessGame::createMenus()
     //Menu i paski
     QMenu *filemenu = menuBar()->addMenu("Plik");
 
-    QAction *newgameAction = new QAction(QIcon::fromTheme("document-new"),"Nowa gra", this);
+    QAction *newgameAction = new QAction(QIcon::fromTheme("document-new", QIcon(":/icons/Icons/New file.png")),"Nowa gra", this);
     newgameAction->setShortcut(QKeySequence::New);
     newgameAction->setStatusTip("Rozpocznij nową grę");
     filemenu->addAction(newgameAction);
     connect(newgameAction,SIGNAL(triggered(bool)),this,SLOT(new_game()));
 
-    QAction *openGameAction = new QAction(QIcon::fromTheme("document-open"),"Otwórz", this);
+    QAction *openGameAction = new QAction(QIcon::fromTheme("document-open", QIcon(":/icons/Icons/Open file.png")),"Otwórz", this);
     openGameAction->setShortcut(QKeySequence::Open);
     openGameAction->setStatusTip("Otwórz grę z pliku");
     filemenu->addAction(openGameAction);
@@ -252,13 +252,13 @@ void chessGame::createMenus()
 
     filemenu->addSeparator();
 
-    QAction *saveGameAction = new QAction(QIcon::fromTheme("document-save"),"Zapisz", this);
+    QAction *saveGameAction = new QAction(QIcon::fromTheme("document-save", QIcon(":/icons/Icons/Save.png")),"Zapisz", this);
     saveGameAction->setShortcut(QKeySequence::Save);
     saveGameAction->setStatusTip("Zapisz stan gry");
     filemenu->addAction(saveGameAction);
     connect(saveGameAction,SIGNAL(triggered(bool)),this,SLOT(save_game()));
 
-    QAction *saveAsGameAction = new QAction(QIcon::fromTheme("document-save-as"),"Zapisz jako", this);
+    QAction *saveAsGameAction = new QAction(QIcon::fromTheme("document-save-as", QIcon(":/icons/Icons/Save as.png")),"Zapisz jako", this);
     saveAsGameAction->setShortcut(QKeySequence::SaveAs);
     saveAsGameAction->setStatusTip("Zapisz stan gry");
     filemenu->addAction(saveAsGameAction);
@@ -266,7 +266,7 @@ void chessGame::createMenus()
 
     filemenu->addSeparator();
 
-    QAction *settingsAction = new QAction(QIcon::fromTheme("preferences-system"),"Ustawienia", this);
+    QAction *settingsAction = new QAction(QIcon::fromTheme("preferences-system", QIcon(":/icons/Icons/Save as.png")),"Ustawienia", this);
     settingsAction->setMenuRole(QAction::PreferencesRole);
     settingsAction->setShortcut(QKeySequence::Preferences);
     newgameAction->setStatusTip("Otwórz ustawienia gry");
@@ -275,7 +275,7 @@ void chessGame::createMenus()
 
     filemenu->addSeparator();
 
-    QAction *closeAction = new QAction(QIcon::fromTheme("application-exit"), "Zamknij",this);
+    QAction *closeAction = new QAction(QIcon::fromTheme("application-exit", QIcon(":/icons/Icons/Close.png")), "Zamknij",this);
     closeAction->setShortcut(QKeySequence::Quit);
     closeAction->setStatusTip("Kliknij by zamknąć grę");
     closeAction->setMenuRole(QAction::QuitRole);
@@ -284,12 +284,12 @@ void chessGame::createMenus()
 
     QMenu *helpmenu = menuBar()->addMenu("Pomoc");
 
-    QAction *aboutQtAction = new QAction(QIcon::fromTheme("about"),"About Qt", this);
+    QAction *aboutQtAction = new QAction(QIcon(":/icons/Icons/Qt.png"),"About Qt", this);
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     helpmenu->addAction(aboutQtAction);
     connect(aboutQtAction,SIGNAL(triggered(bool)),this,SLOT(about_qt()));
 
-    QAction *aboutGameAction = new QAction(QIcon::fromTheme("about"),"About Game", this);
+    QAction *aboutGameAction = new QAction(QIcon::fromTheme("about", QIcon(":/icons/Icons/Help.png")),"About Game", this);
     aboutGameAction->setMenuRole(QAction::AboutRole);
     helpmenu->addAction(aboutGameAction);
     connect(aboutGameAction,SIGNAL(triggered(bool)),this,SLOT(about_game()));

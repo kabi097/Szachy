@@ -24,4 +24,14 @@
     <qresource prefix="/others">
         <file>Images/arrow.png</file>
     </qresource>
+    <qresource prefix="/icons">
+        <file>Icons/Open file.png</file>
+        <file>Icons/Settings.png</file>
+        <file>Icons/Save as.png</file>
+        <file>Icons/Save.png</file>
+        <file>Icons/New file.png</file>
+        <file>Icons/Close.png</file>
+        <file>Icons/Help.png</file>
+        <file>Icons/Qt.png</file>
+    </qresource>
 </RCC>
