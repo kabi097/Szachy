@@ -104,7 +104,6 @@ void chessPanel::updateLost()
 
 void chessPanel::clearLost()
 {
-    qDebug() << "Wchodzimy!!!!";
     QLayoutItem *oldpiece;
     while ((oldpiece = lostWhiteLayout->takeAt(0)) != 0) {
         oldpiece->widget()->setParent(0);

@@ -69,5 +69,5 @@ void chessPiece::nextMove()
 
 chessPiece::~chessPiece()
 {
-    qDebug() << "Chess piece " << name << " deleted.";
+    //qDebug() << "Chess piece " << name << " deleted.";
 }

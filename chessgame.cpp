@@ -39,9 +39,8 @@ void chessGame::save_game()
             currentFile = QFileDialog::getSaveFileName(this, "Zapisz");
         }
         QFile file(currentFile);
-        if (!file.open(QFile::WriteOnly | QFile::Text)) {
-            QMessageBox::critical(this,"Błąd!", "Nie udało się zapisać pliku.");
-        } else {
+        if (file.open(QFile::WriteOnly | QFile::Text)) {
+            file.resize(0);
             QTextStream out(&file);
             QStringList history = chessboard->history;
             int counter=0;
@@ -52,9 +51,9 @@ void chessGame::save_game()
                     out << endl;
                     counter=0;
                 }
+                setWindowModified(false);
+                saved=true;
             }
-            setWindowModified(false);
-            saved=true;
         }
     }
 }
@@ -63,14 +62,10 @@ void chessGame::saveAs_game()
 {
     QString newfile = QFileDialog::getSaveFileName(this, tr("Zapisz"));
     QFile file(newfile);
-    if (!file.open(QFile::WriteOnly | QFile::Text)) {
-        QMessageBox::critical(this,"Błąd!", "Nie udało się zapisać pliku.");
-    } else {
+    if (file.open(QFile::WriteOnly | QFile::Text)) {
         currentFile = newfile;
         QTextStream out(&file);
-
         QStringList history = chessboard->history;
-
         int counter=0;
         for (int i=0; i<history.size(); i++) {
             out << history.at(i) << " ";
@@ -82,6 +77,8 @@ void chessGame::saveAs_game()
         }
         setWindowModified(false);
         saved=true;
+    } else {
+        QMessageBox::warning(this,"Błąd!", "Nie udało się odczytać pliku.");
     }
 }
 
@@ -102,11 +99,8 @@ void chessGame::open_game()
             save_game();
             break;
         case QMessageBox::Discard:
-            chessboard->resetChessboard();
-            chessboard->generateChessPieces();
-            panel->clearLost();
-            panel->updateCurrentPlayer();
             saved = true;
+            setWindowModified(false);
             open_game();
             break;
         default:
@@ -116,22 +110,26 @@ void chessGame::open_game()
         currentFile = QFileDialog::getOpenFileName(this, "Otwórz");
         QFile file(currentFile);
         if (file.open(QFile::ReadOnly | QFile::Text)) {
+            chessboard->resetChessboard();
+            chessboard->generateChessPieces();
+            panel->clearLost();
+            panel->updateCurrentPlayer();
             QTextStream in(&file);
             try {
                 while (!in.atEnd()) {
                     QString line = in.readLine();
                     chessboard->readFromText(line);
                 }
+                saved = true;
             } catch (QString error) {
                 QMessageBox::critical(this,"Błąd!", error);
                 chessboard->resetChessboard();
                 chessboard->generateChessPieces();
                 panel->clearLost();
                 panel->updateCurrentPlayer();
-                saved = true;
             }
-        } else {
-            QMessageBox::warning(this,"Błąd!", "Nie udało się odczytać pliku.");
+            saved = true;
+            setWindowModified(false);
         }
     }
 }
@@ -139,6 +137,7 @@ void chessGame::open_game()
 void chessGame::new_game()
 {
     if (saved==false) {
+        save_game();
         QMessageBox message;
         message.setWindowTitle("Ostrzeżenie");
         message.setText("Gra nie została zapisana.");
@@ -165,6 +164,7 @@ void chessGame::new_game()
         chessboard->resetChessboard();
         chessboard->generateChessPieces();
         saved = true;
+        setWindowModified(false);
     }
 }
 
