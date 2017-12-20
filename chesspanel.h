@@ -16,8 +16,8 @@ public:
     ~chessPanel();
 
 public slots:
-    void updateLost();
-    void updateCurrentPlayer();
+    void updateLost();          //!< Aktualizuje listę ze straconymi pionkami
+    void updateCurrentPlayer(); //!< Zmienia aktualny numer gracza
 
 private:
     chessBoard *chessboard;

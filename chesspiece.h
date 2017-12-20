@@ -8,13 +8,13 @@
 class chessPiece
 {
 public:
-    chessPiece(int player_number, char sign, QString name = "");
-    QPixmap getImage();
-    char getSign();
-    QString getName();
-    int getPlayer();
-    int getMoveNumber();
-    void nextMove();
+    chessPiece(int player_number, char sign, QString name = "");    //!< Konstruktor klasy chessPiece
+    QPixmap getImage();     //!< Zwraca obrazek figury w postaci obiektu QPixmap
+    char getSign();         //!< Zwraca znak figury
+    QString getName();      //!< Zwraca słowną nazwę figury
+    int getPlayer();        //!< Zwraca numer gracza do którego należy figura
+    int getMoveNumber();    //!< Zwraca liczbę wykonanych ruchów figury
+    void nextMove();        //!< Zwiększa licznik wykonanych ruchów o 1
     ~chessPiece();
 
 private:

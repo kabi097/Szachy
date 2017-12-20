@@ -23,19 +23,19 @@ public:
     ~chessGame();
 
 public slots:
-    void new_game();
-    void save_game();
-    void saveAs_game();
-    void open_game();
-    void close_window();
-    void open_settings();
-    void about_qt();
-    void about_game();
-    void game_over(int player);
-    void setNotSaved();
+    void new_game();        //!<Tworzy nową sesję gry.
+    void save_game();       //!<Zapisuje obecny stan gry do pliku
+    void saveAs_game();     //!<Zapisuje obecny stan gry do nowego pliku
+    void open_game();       //!<Otwiera i odczytuje stan gry z pliku
+    void close_window();    //!<Zamyka grę
+    void open_settings();   //!<Otwiera okno ustawień
+    void about_qt();        //!<Otwiera okno "About Qt"
+    void about_game();      //!<Otwiera okno "O grze"
+    void game_over(int player); //!<Kończy aktualną grę i wyświetla komunikat o zwycięstwie.
+    void setNotSaved();     //!<Ustawia stan gry na niezapisany
 
 protected:
-    void closeEvent(QCloseEvent *event);
+    void closeEvent(QCloseEvent *event);    ///Definiuje działanie w przypadku zamknięcia okna.
 
 private:
     void createMenus();

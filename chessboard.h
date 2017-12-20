@@ -6,7 +6,6 @@
 #include <QGridLayout>
 #include <QList>
 
-
 class chessBoard : public QWidget
 {
     Q_OBJECT
@@ -15,22 +14,22 @@ class chessBoard : public QWidget
 
 public:
     chessBoard(QWidget *parent = 0);
-    void generateChessPieces();         //Generuje pionki na szachownicy
+    void generateChessPieces();         //!<Generuje figury na szachownicy
     void updateColors(QString newblack, QString newwhite, QString newselect, QString newattack);
-                                        //Ustawia nowy zestaw kolorów na szachownicy
-    void resetChessboard();             //Czyści szachownicę - usuwa wszystkie pionki (również z listy), resetuje numer gracza
-    void blockAllSquares();             //Funkcja ustawia wszystkie pola na nieaktywne
-    void readFromText(QString line);    //Funkcja wczytująca ruchy z tekstu (zapisane w notacji szachowaj)
-    QStringList history;                //Lista stringów przechowująca historię ruchów w notacji szachowej
+                                        //!<Ustawia nowy zestaw kolorów na szachownicy
+    void resetChessboard();             //!<Czyści szachownicę - usuwa wszystkie pionki (również z listy), resetuje numer gracza
+    void blockAllSquares();             //!<Funkcja ustawia wszystkie pola na nieaktywne
+    void readFromText(QString line);    //!<Funkcja wczytująca ruchy z tekstu (zapisane w notacji szachowaj)
+    QStringList history;                //!<Lista stringów przechowująca historię ruchów w notacji szachowej
     ~chessBoard();
 
 signals:
-    void checkMate(int player);         //Szach mat
-    void nextMove();                    //Sygnał wysyłany każdorazowo po wykonaniu ruchu
-    void newLost();                     //Sygnał wysyłany każdorazowo po zbiciu figury
+    void checkMate(int player);         //!<Sygnał "Szach mat" - wysyłany po zbiciu króla.
+    void nextMove();                    //!<Sygnał wysyłany każdorazowo po wykonaniu ruchu.
+    void newLost();                     //!<Sygnał wysyłany każdorazowo po zbiciu figury.
 
 public slots:
-    void validateClick(int x, int y);
+    void validateClick(int x, int y);   //!<Funkcja analizująca kliknięte pole
 
 private:
     void updateSquares();               //Funkcja aktywująca tylko te pola na których znajdują się figury należące do currentPlayer.

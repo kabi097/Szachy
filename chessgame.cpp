@@ -1,5 +1,13 @@
 #include "chessgame.h"
 
+/*!
+    \class chessGame
+    \brief Główna klasa gry. Odpowiada za poprawne działania i wyświetlanie okna.
+
+    Klasa ta dziedziczy po QMainWindow. Tworzy nowe okno, a w nim szachownicę oraz panel.
+    Odpowiada za prawidłowe działanie pasków i przycisków.
+*/
+
 chessGame::chessGame(QWidget *parent)
     : QMainWindow(parent)
 {

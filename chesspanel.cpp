@@ -1,5 +1,14 @@
 #include "chesspanel.h"
 
+/*!
+    \class chessPanel
+    \brief Odpowiada za prawidłowe wyświetlanie i działanie panelu bocznego.
+
+    Klasa ta dziedziczy po QWidget. Tworzy nowe panel na którym widoczne są ikony użytkowników oraz ich nazwy.
+    Dodatkowo wyświetla listę straconych figur dla każdego gracza.
+    Klasa ta korzysta z zaprzyjaźnienia z klasą chessSquares w celu dostępu do listy straconych pionków.
+*/
+
 chessPanel::chessPanel(chessBoard *board, QWidget *parent) : QWidget(parent)
 {
     chessboard = board;

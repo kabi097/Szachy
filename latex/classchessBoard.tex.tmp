@@ -1,0 +1,99 @@
+\hypertarget{classchessBoard}{}\section{chess\+Board Class Reference}
+\label{classchessBoard}\index{chess\+Board@{chess\+Board}}
+
+
+Klasa \hyperlink{classchessBoard}{chess\+Board} odpowiada za prawidłowe wyświetlanie i działanie szachownicy.  
+
+
+
+
+Inheritance diagram for chess\+Board\+:
+% FIG 0
+
+
+Collaboration diagram for chess\+Board\+:
+% FIG 1
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classchessBoard_aa867893a425aa624b21e9c8185198d3e}{validate\+Click} (int x, int y)
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classchessBoard_acc9cef750420c74bfc72b07a94799c7b}\label{classchessBoard_acc9cef750420c74bfc72b07a94799c7b}} 
+void {\bfseries check\+Mate} (int player)
+\item 
+\mbox{\Hypertarget{classchessBoard_a20775bae5ea49615cf79615d01f9f469}\label{classchessBoard_a20775bae5ea49615cf79615d01f9f469}} 
+void {\bfseries next\+Move} ()
+\item 
+\mbox{\Hypertarget{classchessBoard_ab353f1caafb54b0efa14621a38687711}\label{classchessBoard_ab353f1caafb54b0efa14621a38687711}} 
+void {\bfseries new\+Lost} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classchessBoard_a3ffc09a4d95deaca0f6744ae25bb4f62}{chess\+Board} (Q\+Widget $\ast$parent=0)
+\item 
+\mbox{\Hypertarget{classchessBoard_a429d72a00c66352a9657cba0625c981b}\label{classchessBoard_a429d72a00c66352a9657cba0625c981b}} 
+void {\bfseries generate\+Chess\+Pieces} ()
+\item 
+\mbox{\Hypertarget{classchessBoard_abc343d0274a5d10c01934d3b1da56c1f}\label{classchessBoard_abc343d0274a5d10c01934d3b1da56c1f}} 
+void \hyperlink{classchessBoard_abc343d0274a5d10c01934d3b1da56c1f}{update\+Colors} (Q\+String newblack, Q\+String newwhite, Q\+String newselect, Q\+String newattack)
+\begin{DoxyCompactList}\small\item\em Generuje pionki na szachownicy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchessBoard_ab8a0e470df04224d40a38f99fe4232bc}\label{classchessBoard_ab8a0e470df04224d40a38f99fe4232bc}} 
+void \hyperlink{classchessBoard_ab8a0e470df04224d40a38f99fe4232bc}{reset\+Chessboard} ()
+\begin{DoxyCompactList}\small\item\em Ustawia nowy zestaw kolorów na szachownicy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchessBoard_a3d7939233de9607a91357c3616f5db67}\label{classchessBoard_a3d7939233de9607a91357c3616f5db67}} 
+void \hyperlink{classchessBoard_a3d7939233de9607a91357c3616f5db67}{block\+All\+Squares} ()
+\begin{DoxyCompactList}\small\item\em Czyści szachownicę -\/ usuwa wszystkie pionki (również z listy), resetuje numer gracza. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchessBoard_a43133dc6f58be4b00cc54a7ba744f69a}\label{classchessBoard_a43133dc6f58be4b00cc54a7ba744f69a}} 
+void \hyperlink{classchessBoard_a43133dc6f58be4b00cc54a7ba744f69a}{read\+From\+Text} (Q\+String line)
+\begin{DoxyCompactList}\small\item\em Funkcja ustawia wszystkie pola na nieaktywne. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchessBoard_a91541e52c3b570ad4e06914786f33002}\label{classchessBoard_a91541e52c3b570ad4e06914786f33002}} 
+\hyperlink{classchessBoard_a91541e52c3b570ad4e06914786f33002}{$\sim$chess\+Board} ()
+\begin{DoxyCompactList}\small\item\em Lista stringów przechowująca historię ruchów w notacji szachowej. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classchessBoard_a4a0184eb6e20074eec3fce6a08e0ff62}\label{classchessBoard_a4a0184eb6e20074eec3fce6a08e0ff62}} 
+Q\+String\+List \hyperlink{classchessBoard_a4a0184eb6e20074eec3fce6a08e0ff62}{history}
+\begin{DoxyCompactList}\small\item\em Funkcja wczytująca ruchy z tekstu (zapisane w notacji szachowaj) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classchessBoard_a789fcbbf0675ebb167838f8f7e11fafa}\label{classchessBoard_a789fcbbf0675ebb167838f8f7e11fafa}} 
+class {\bfseries chess\+Settings}
+\item 
+\mbox{\Hypertarget{classchessBoard_a9b25e97c3caab58490ce854e1e72e975}\label{classchessBoard_a9b25e97c3caab58490ce854e1e72e975}} 
+class {\bfseries chess\+Panel}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Klasa \hyperlink{classchessBoard}{chess\+Board} odpowiada za prawidłowe wyświetlanie i działanie szachownicy. 
+
+Klasa ta dziedziczy po Q\+Widget i wyświetla pustą szachownicę o standardowych kolorach szary-\/biały. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classchessBoard_a3ffc09a4d95deaca0f6744ae25bb4f62}\label{classchessBoard_a3ffc09a4d95deaca0f6744ae25bb4f62}} 
+\index{chess\+Board@{chess\+Board}!chess\+Board@{chess\+Board}}
+\index{chess\+Board@{chess\+Board}!chess\+Board@{chess\+Board}}
+\subsubsection{\texorpdfstring{chess\+Board()}{chessBoard()}}
+{\footnotesize\ttfamily chess\+Board\+::chess\+Board (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Konstruktor klasy \hyperlink{classchessBoard}{chess\+Board} tworzy pustą szachownicę składającą sie z obiektów typu \hyperlink{classchessSquare}{chess\+Square} oraz ustawia domyślne kolory. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classchessBoard_aa867893a425aa624b21e9c8185198d3e}\label{classchessBoard_aa867893a425aa624b21e9c8185198d3e}} 
+\index{chess\+Board@{chess\+Board}!validate\+Click@{validate\+Click}}
+\index{validate\+Click@{validate\+Click}!chess\+Board@{chess\+Board}}
+\subsubsection{\texorpdfstring{validate\+Click}{validateClick}}
+{\footnotesize\ttfamily void chess\+Board\+::validate\+Click (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Funkcja analizuje współrzędne pola na szachownicy (x, y). Wywoływana jest przez sygnał clicked() z klasy \hyperlink{classchessSquare}{chess\+Square}. W przypadku gdy na danym polu znajduje się figura, funkcja rozpoznaje typ figury, a następnie aktywuje te pola na które dana figura może się przemieścić. W przypadku gdy na danym polu nie ma żadnej figury, wywoływana jest funkcja move(). 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+chessboard.\+h\item 
+chessboard.\+cpp\end{DoxyCompactItemize}

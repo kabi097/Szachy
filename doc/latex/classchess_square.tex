@@ -1,0 +1,69 @@
+\hypertarget{classchess_square}{}\section{chess\+Square Class Reference}
+\label{classchess_square}\index{chess\+Square@{chess\+Square}}
+
+
+Klasa reprezentująca pojedyncze pole na szachownicy.  
+
+
+Inheritance diagram for chess\+Square\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classchess_square}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classchess_square_a3d79a4695b0bfa8415da18a7c82819c3}\label{classchess_square_a3d79a4695b0bfa8415da18a7c82819c3}} 
+void \hyperlink{classchess_square_a3d79a4695b0bfa8415da18a7c82819c3}{clicked} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Sygnał emitowany w przypadku gdy użytkownik kliknął w aktywne pole. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classchess_square_a818660e4b5fc11c1749a9af5b9a35aff}\label{classchess_square_a818660e4b5fc11c1749a9af5b9a35aff}} 
+{\bfseries chess\+Square} (int col, int row, Q\+Widget $\ast$parent=nullptr)
+\item 
+\mbox{\Hypertarget{classchess_square_a2393c2aee673f38f121a82562707c740}\label{classchess_square_a2393c2aee673f38f121a82562707c740}} 
+void \hyperlink{classchess_square_a2393c2aee673f38f121a82562707c740}{set\+Active} (bool active)
+\begin{DoxyCompactList}\small\item\em Ustawia pole jako aktywne (w zależności od wartości active) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_square_a36cdc0a51aa436eb4fe0ee70cfc80bc9}\label{classchess_square_a36cdc0a51aa436eb4fe0ee70cfc80bc9}} 
+void \hyperlink{classchess_square_a36cdc0a51aa436eb4fe0ee70cfc80bc9}{set\+Active} (Q\+String color)
+\begin{DoxyCompactList}\small\item\em Ustawia pole jako aktywne i dodatkowo ustawia tymczasowy kolor tła. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_square_ac8ae6f86143d988ab3c9d54c89c2784f}\label{classchess_square_ac8ae6f86143d988ab3c9d54c89c2784f}} 
+bool \hyperlink{classchess_square_ac8ae6f86143d988ab3c9d54c89c2784f}{is\+Piece} ()
+\begin{DoxyCompactList}\small\item\em Funkcja sprawdzająca czy na danym polu znajduje się figura. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_square_ad099713945d1e0a01514cf8b939a34b1}\label{classchess_square_ad099713945d1e0a01514cf8b939a34b1}} 
+bool \hyperlink{classchess_square_ad099713945d1e0a01514cf8b939a34b1}{is\+Active} ()
+\begin{DoxyCompactList}\small\item\em Zwraca true albo false w zależności czy pole jest aktywne. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_square_a2fee406370161f95d9a4ff9b0e82c436}\label{classchess_square_a2fee406370161f95d9a4ff9b0e82c436}} 
+\hyperlink{classchess_piece}{chess\+Piece} $\ast$ \hyperlink{classchess_square_a2fee406370161f95d9a4ff9b0e82c436}{get\+Piece} ()
+\begin{DoxyCompactList}\small\item\em Zwraca figurę z danego pola. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_square_aa7cbc607deb4a7e4844553e3c74076a1}\label{classchess_square_aa7cbc607deb4a7e4844553e3c74076a1}} 
+void \hyperlink{classchess_square_aa7cbc607deb4a7e4844553e3c74076a1}{set\+Piece} (\hyperlink{classchess_piece}{chess\+Piece} $\ast$piece)
+\begin{DoxyCompactList}\small\item\em Ustawia figurę na polu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_square_ace9bb5543d5e8a2354a979bd7dc95c5c}\label{classchess_square_ace9bb5543d5e8a2354a979bd7dc95c5c}} 
+void \hyperlink{classchess_square_ace9bb5543d5e8a2354a979bd7dc95c5c}{remove\+Piece} ()
+\begin{DoxyCompactList}\small\item\em Usuwa figurę z pola. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_square_a2834d87001da98346f34e72168b70ea7}\label{classchess_square_a2834d87001da98346f34e72168b70ea7}} 
+void \hyperlink{classchess_square_a2834d87001da98346f34e72168b70ea7}{set\+Background\+Color} (Q\+String color)
+\begin{DoxyCompactList}\small\item\em Ustawia nowy domyślny kolor tła. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_square_a370b3b5cffd0d7fa91ac23f107e062e5}\label{classchess_square_a370b3b5cffd0d7fa91ac23f107e062e5}} 
+Q\+String \hyperlink{classchess_square_a370b3b5cffd0d7fa91ac23f107e062e5}{to\+Chess\+Notation} ()
+\begin{DoxyCompactList}\small\item\em Zwraca współrzędne zapisane w notacji szachowej. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classchess_square_a237c7ccd0ba13d99c0f6eff2162fbf48}\label{classchess_square_a237c7ccd0ba13d99c0f6eff2162fbf48}} 
+void \hyperlink{classchess_square_a237c7ccd0ba13d99c0f6eff2162fbf48}{mouse\+Press\+Event} (Q\+Mouse\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Funkcja określająca zachowanie programu w przypadku kliknięcia w pole. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Klasa reprezentująca pojedyncze pole na szachownicy. 
+
+Klasa ta dziedziczy po Q\+Label. Odpowiada za prawidłowe wyświetlanie pojedynczego pola na szachownicy. Każde pole posiada atrybut active, określające czy jest ono aktywne. Tylko aktywne pola mogą być wybierane / zaznaczane przez użytkownika. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+chesssquare.\+h\item 
+chesssquare.\+cpp\end{DoxyCompactItemize}

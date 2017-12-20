@@ -1,0 +1,42 @@
+\hypertarget{classchess_panel}{}\section{chess\+Panel Class Reference}
+\label{classchess_panel}\index{chess\+Panel@{chess\+Panel}}
+
+
+Odpowiada za prawidłowe wyświetlanie i działanie panelu bocznego.  
+
+
+Inheritance diagram for chess\+Panel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classchess_panel}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classchess_panel_adeab3d504a94b4380487c3a04a10441e}\label{classchess_panel_adeab3d504a94b4380487c3a04a10441e}} 
+void \hyperlink{classchess_panel_adeab3d504a94b4380487c3a04a10441e}{update\+Lost} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje listę ze straconymi pionkami. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_panel_a65f79990c4a6fdd8b26c469d605d44e8}\label{classchess_panel_a65f79990c4a6fdd8b26c469d605d44e8}} 
+void \hyperlink{classchess_panel_a65f79990c4a6fdd8b26c469d605d44e8}{update\+Current\+Player} ()
+\begin{DoxyCompactList}\small\item\em Zmienia aktualny numer gracza. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classchess_panel_aaba2c97d187804e244977d982c71a79f}\label{classchess_panel_aaba2c97d187804e244977d982c71a79f}} 
+{\bfseries chess\+Panel} (\hyperlink{classchess_board}{chess\+Board} $\ast$board, Q\+Widget $\ast$parent=nullptr)
+\item 
+\mbox{\Hypertarget{classchess_panel_a5fb61b2212fc50934fb84865774a1708}\label{classchess_panel_a5fb61b2212fc50934fb84865774a1708}} 
+void {\bfseries clear\+Lost} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Odpowiada za prawidłowe wyświetlanie i działanie panelu bocznego. 
+
+Klasa ta dziedziczy po Q\+Widget. Tworzy nowe panel na którym widoczne są ikony użytkowników oraz ich nazwy. Dodatkowo wyświetla listę straconych figur dla każdego gracza. Klasa ta korzysta z zaprzyjaźnienia z klasą chess\+Squares w celu dostępu do listy straconych pionków. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+chesspanel.\+h\item 
+chesspanel.\+cpp\end{DoxyCompactItemize}

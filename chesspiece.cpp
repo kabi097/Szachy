@@ -1,5 +1,23 @@
 #include "chesspiece.h"
 
+/*!
+    \class chessPiece
+    \brief Klasa reprezentująca pojedynczą figurę
+
+    Klasa zawierająca informacje o konkretnej figurze, takie jak nazwa, numer gracza - właściciela, adres obrazka itp.
+*/
+
+/*!
+    \fn chessPiece::chessPiece(int player_number, char sign, QString name)
+    \brief Konstruktor klasy chessPiece
+    \param player_number Numer gracza-właściciela. 0 - biały,  1 - czarny
+    \param sign Znak rezprezentujący figurę (np 'K' - król)
+    \param name Słowny opis figury
+
+    Konstruktor klasy chessPiece przypisuje zmiennym prywatnym wartości z argumentów oraz
+    ustawia konkretny obraz na podstawie znaku sign.
+*/
+
 chessPiece::chessPiece(int player_number, char sign, QString name)
 {
     this->sign = sign;
@@ -35,6 +53,12 @@ chessPiece::chessPiece(int player_number, char sign, QString name)
         break;
     }
 }
+
+/*!
+    \fn QPixmap chessPiece::getImage()
+
+    Funkcja zwraca obrazek figury w postaci obiektu typu QPixmap.
+*/
 
 QPixmap chessPiece::getImage()
 {

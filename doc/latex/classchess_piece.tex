@@ -1,0 +1,75 @@
+\hypertarget{classchess_piece}{}\section{chess\+Piece Class Reference}
+\label{classchess_piece}\index{chess\+Piece@{chess\+Piece}}
+
+
+Klasa reprezentująca pojedynczą figurę  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classchess_piece_a2045dacd528cc380a1776d851b4583c8}{chess\+Piece} (int player\+\_\+number, char sign, Q\+String name=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Konstruktor klasy \hyperlink{classchess_piece}{chess\+Piece}. \end{DoxyCompactList}\item 
+Q\+Pixmap \hyperlink{classchess_piece_ae86984a51801d6f7bcd227e725084df4}{get\+Image} ()
+\begin{DoxyCompactList}\small\item\em Zwraca obrazek figury w postaci obiektu Q\+Pixmap. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_piece_acbc5b0aaf67995a864197e73842845dc}\label{classchess_piece_acbc5b0aaf67995a864197e73842845dc}} 
+char \hyperlink{classchess_piece_acbc5b0aaf67995a864197e73842845dc}{get\+Sign} ()
+\begin{DoxyCompactList}\small\item\em Zwraca znak figury. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_piece_a112a342de4a58271b658615800f50ea2}\label{classchess_piece_a112a342de4a58271b658615800f50ea2}} 
+Q\+String \hyperlink{classchess_piece_a112a342de4a58271b658615800f50ea2}{get\+Name} ()
+\begin{DoxyCompactList}\small\item\em Zwraca słowną nazwę figury. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_piece_a3a46c87ea362e4fa3204c3f257d7f439}\label{classchess_piece_a3a46c87ea362e4fa3204c3f257d7f439}} 
+int \hyperlink{classchess_piece_a3a46c87ea362e4fa3204c3f257d7f439}{get\+Player} ()
+\begin{DoxyCompactList}\small\item\em Zwraca numer gracza do którego należy figura. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_piece_a496f4a51efbb1287138d3dd94bf2cbdf}\label{classchess_piece_a496f4a51efbb1287138d3dd94bf2cbdf}} 
+int \hyperlink{classchess_piece_a496f4a51efbb1287138d3dd94bf2cbdf}{get\+Move\+Number} ()
+\begin{DoxyCompactList}\small\item\em Zwraca liczbę wykonanych ruchów figury. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_piece_ab72882d27eb8f5ce67f0a7eff059e3ff}\label{classchess_piece_ab72882d27eb8f5ce67f0a7eff059e3ff}} 
+void \hyperlink{classchess_piece_ab72882d27eb8f5ce67f0a7eff059e3ff}{next\+Move} ()
+\begin{DoxyCompactList}\small\item\em Zwiększa licznik wykonanych ruchów o 1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Klasa reprezentująca pojedynczą figurę 
+
+Klasa zawierająca informacje o konkretnej figurze, takie jak nazwa, numer gracza -\/ właściciela, adres obrazka itp. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classchess_piece_a2045dacd528cc380a1776d851b4583c8}\label{classchess_piece_a2045dacd528cc380a1776d851b4583c8}} 
+\index{chess\+Piece@{chess\+Piece}!chess\+Piece@{chess\+Piece}}
+\index{chess\+Piece@{chess\+Piece}!chess\+Piece@{chess\+Piece}}
+\subsubsection{\texorpdfstring{chess\+Piece()}{chessPiece()}}
+{\footnotesize\ttfamily chess\+Piece\+::chess\+Piece (\begin{DoxyParamCaption}\item[{int}]{player\+\_\+number,  }\item[{char}]{sign,  }\item[{Q\+String}]{name = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Konstruktor klasy \hyperlink{classchess_piece}{chess\+Piece}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+number} & Numer gracza-\/właściciela. 0 -\/ biały, 1 -\/ czarny \\
+\hline
+{\em sign} & Znak rezprezentujący figurę (np \textquotesingle{}K\textquotesingle{} -\/ król) \\
+\hline
+{\em name} & Słowny opis figury\\
+\hline
+\end{DoxyParams}
+Konstruktor klasy \hyperlink{classchess_piece}{chess\+Piece} przypisuje zmiennym prywatnym wartości z argumentów oraz ustawia konkretny obraz na podstawie znaku sign. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classchess_piece_ae86984a51801d6f7bcd227e725084df4}\label{classchess_piece_ae86984a51801d6f7bcd227e725084df4}} 
+\index{chess\+Piece@{chess\+Piece}!get\+Image@{get\+Image}}
+\index{get\+Image@{get\+Image}!chess\+Piece@{chess\+Piece}}
+\subsubsection{\texorpdfstring{get\+Image()}{getImage()}}
+{\footnotesize\ttfamily Q\+Pixmap chess\+Piece\+::get\+Image (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zwraca obrazek figury w postaci obiektu Q\+Pixmap. 
+
+Funkcja zwraca obrazek figury w postaci obiektu typu Q\+Pixmap. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+chesspiece.\+h\item 
+chesspiece.\+cpp\end{DoxyCompactItemize}

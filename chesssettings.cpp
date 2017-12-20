@@ -1,6 +1,13 @@
 #include "chesssettings.h"
 #include "ui_chesssettings.h"
 
+/*!
+    \class chessSettings
+    \brief Odpowiada za prawidłowe wyświetlanie i działanie okna ustawień.
+
+    Tworzy nowe okno ustawień korzystając z klasy bazowej QDialog. Oferuje zmianę kolorów szachownicy.
+*/
+
 chessSettings::chessSettings(chessBoard *board, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::chessSettings)

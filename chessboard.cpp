@@ -1,5 +1,21 @@
 #include "chessboard.h"
 
+/*!
+    \class chessBoard
+    \brief Klasa chessBoard odpowiada za prawidłowe wyświetlanie i działanie szachownicy.
+
+    Klasa ta dziedziczy po QWidget i wyświetla pustą szachownicę o standardowych kolorach
+    szary-biały.
+*/
+
+/*!
+    \fn chessBoard::chessBoard(QWidget *parent)
+    \brief Konstruktor klasy chessBoard
+
+    Konstruktor klasy chessBoard tworzy pustą szachownicę składającą sie z obiektów typu chessSquare
+    oraz ustawia domyślne kolory.
+*/
+
 chessBoard::chessBoard(QWidget *parent) : QWidget(parent)
 {
     currentPlayer = 0;
@@ -24,6 +40,17 @@ chessBoard::chessBoard(QWidget *parent) : QWidget(parent)
 
     this->setLayout(gridlayout);
 }
+
+/*!
+    \fn void chessBoard::validateClick(int x, int y)
+    \param x Współrzędna x kliknietego pola
+    \param y Współrzędna x kliknietego pola
+
+    Funkcja analizuje współrzędne pola na szachownicy (x, y). Wywoływana jest przez sygnał clicked() z klasy chessSquare.
+    W przypadku gdy na danym polu znajduje się figura, funkcja rozpoznaje typ figury, a następnie aktywuje te pola
+    na które dana figura może się przemieścić. W przypadku gdy na danym polu nie ma żadnej figury, wywoływana jest funkcja
+    move().
+*/
 
 void chessBoard::validateClick(int x, int y)
 {
@@ -152,10 +179,18 @@ void chessBoard::updateSquares()
     }
 }
 
+
 void chessBoard::setCurrentPlayer(int player)
 {
     currentPlayer = player;
 }
+
+/*!
+    \fn void chessBoard::move()
+
+    Przenosi figury na szachownicy. Jeżeli na docelowo wybranym polu znajduje się jakaś figura, to zostaje ona usunięta.
+    Funkcja zawiera obsługę wyjątków. Informuje ona o błędzie dotyczącym niepoprawnych współrzędnych.
+*/
 
 void chessBoard::move()
 {
@@ -204,6 +239,12 @@ bool chessBoard::checkActive(int x, int y)
         return false;
     }
 }
+
+/*!
+    \fn void chessBoard::generateChessPieces()
+
+    Generuje nowy zestaw figur i przypisuje je do szachownicy na domyślnych pozycjach.
+*/
 
 void chessBoard::generateChessPieces()
 {
@@ -264,6 +305,18 @@ void chessBoard::generateChessPieces()
     updateSquares();
 }
 
+/*!
+    \fn chessBoard::updateColors(QString newblack, QString newwhite, QString newselect, QString newattack)
+
+    \param newblack Nowy kolor pola czarnego
+    \param newwhite Nowy kolor pola białego
+    \param newselect Nowy kolor pola zaznaczonego
+    \param newattack Nowy kolor pola atakującego
+
+    Ustawia nowy zestaw kolorów na szachownicy. W jej argumentach podawane są  ustawiane kolory w postaci tekstowej (QString).
+*/
+
+
 void chessBoard::updateColors(QString newblack, QString newwhite, QString newselect, QString newattack)
 {
     blackColor = newblack;
@@ -272,6 +325,14 @@ void chessBoard::updateColors(QString newblack, QString newwhite, QString newsel
     selectColor = newselect;
     setDefaultColors();
 }
+
+/*!
+    \fn void chessBoard::resetChessboard()
+
+     Usuwa ona wszystkie pionki (również z listy straconych figur).
+     Ponadto resetuje ona numer gracza.
+*/
+
 
 void chessBoard::resetChessboard()
 {
@@ -289,6 +350,13 @@ void chessBoard::resetChessboard()
         delete lost.takeFirst();
     }
 }
+
+/*!
+    \fn void chessBoard::setDefaultColors()
+
+    Odświeża kolory na szachownicy, przypisując im domyślne wartości (na podstawie zmiennych whiteColor, blackColor itp.).
+*/
+
 
 void chessBoard::setDefaultColors()
 {
@@ -311,6 +379,13 @@ void chessBoard::setDefaultColors()
     }
 }
 
+/*!
+    \fn void chessBoard::blockAllSquares()
+
+    Ustawia wszystkie pola jako nieaktywne. Funkcja wywoływana po zakończeniu gry.
+*/
+
+
 void chessBoard::blockAllSquares()
 {
     for (int i=0; i<8; i++) {
@@ -319,6 +394,17 @@ void chessBoard::blockAllSquares()
         }
     }
 }
+
+/*!
+    \fn void chessBoard::readFromText(QString line)
+
+    \param line Pojedyncza linia z pliku tekstowego. Np: "A2 B2"
+
+    Funkcja analizuje współrzędne pola na szachownicy (x, y). Wywoływana jest przez sygnał clicked() z klasy chessSquare.
+    W przypadku gdy na danym polu znajduje się figura, funkcja rozpoznaje typ figury, a następnie aktywuje te pola
+    na które dana figura może się przemieścić. W przypadku gdy na danym polu nie ma żadnej figury, wywoływana jest funkcja
+    move().
+*/
 
 void chessBoard::readFromText(QString line)
 {
@@ -343,6 +429,16 @@ void chessBoard::readFromText(QString line)
         throw QString("Błąd! Niepoprawna zawartość pliku!");
     }
 }
+
+/*!
+    \fn chessBoard::~chessBoard()
+
+    \param x Współrzędna x kliknietego pola
+    \param y Współrzędna x kliknietego pola
+
+    Destruktor usuwa wszystkie pola z szachownicy.
+*/
+
 
 chessBoard::~chessBoard()
 {

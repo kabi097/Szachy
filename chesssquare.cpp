@@ -1,8 +1,16 @@
 #include "chesssquare.h"
 
+/*!
+    \class chessSquare
+    \brief Klasa reprezentująca pojedyncze pole na szachownicy.
+
+    Klasa ta dziedziczy po QLabel. Odpowiada za prawidłowe wyświetlanie pojedynczego pola na szachownicy.
+    Każde pole posiada atrybut active, określające czy jest ono aktywne. Tylko aktywne pola mogą być wybierane / zaznaczane
+    przez użytkownika.
+*/
+
 chessSquare::chessSquare(int col, int row, QWidget *parent) : QLabel(parent)
 {
-    //setFixedSize(50,50);
     setMinimumSize(64,64);
     setScaledContents(true);
 
