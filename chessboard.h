@@ -21,7 +21,6 @@ public:
     void resetChessboard();             //Czyści szachownicę - usuwa wszystkie pionki (również z listy), resetuje numer gracza
     void blockAllSquares();             //Funkcja ustawia wszystkie pola na nieaktywne
     void readFromText(QString line);    //Funkcja wczytująca ruchy z tekstu (zapisane w notacji szachowaj)
-
     QStringList history;                //Lista stringów przechowująca historię ruchów w notacji szachowej
     ~chessBoard();
 

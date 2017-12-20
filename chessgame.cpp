@@ -120,7 +120,6 @@ void chessGame::open_game()
                     QString line = in.readLine();
                     chessboard->readFromText(line);
                 }
-                saved = true;
             } catch (QString error) {
                 QMessageBox::critical(this,"Błąd!", error);
                 chessboard->resetChessboard();
@@ -276,7 +275,7 @@ void chessGame::createMenus()
     QAction *settingsAction = new QAction(QIcon::fromTheme("preferences-system", QIcon(":/icons/Icons/Settings.png")),"Ustawienia", this);
     settingsAction->setMenuRole(QAction::PreferencesRole);
     settingsAction->setShortcut(QKeySequence::Preferences);
-    newgameAction->setStatusTip("Otwórz ustawienia gry");
+    settingsAction->setStatusTip("Otwórz ustawienia gry");
     filemenu->addAction(settingsAction);
     connect(settingsAction,SIGNAL(triggered(bool)),this,SLOT(open_settings()));
 
