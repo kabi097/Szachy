@@ -144,7 +144,6 @@ void chessGame::open_game()
 void chessGame::new_game()
 {
     if (saved==false) {
-        save_game();
         QMessageBox message;
         message.setWindowTitle("Ostrzeżenie");
         message.setText("Gra nie została zapisana.");
