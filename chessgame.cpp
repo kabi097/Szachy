@@ -222,7 +222,8 @@ void chessGame::about_qt()
 
 void chessGame::about_game()
 {
-    QMessageBox::about(this,"O grze", "Witamy!");
+    QString about = "Program reprezentuje grę w szachy. Zbudowany jest z 6 klas, które zapewniają mu pełną funkcjonalność. Umożliwia on grę dwóch osób oraz zapis i odczyt wyników z pliku.  Program posiada funkcje za pomocą których użytkownik może modyfikować wygląd szachownicy w dowolny sposób co czyni grę ciekawszą.";
+    QMessageBox::about(this,"O grze", about);
 }
 
 void chessGame::game_over(int player)
