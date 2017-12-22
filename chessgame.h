@@ -20,6 +20,7 @@ class chessGame : public QMainWindow
 
 public:
     chessGame(QWidget *parent = 0);
+    bool close_window();    //!<Zamyka grę
     ~chessGame();
 
 public slots:
@@ -27,12 +28,13 @@ public slots:
     void save_game();       //!<Zapisuje obecny stan gry do pliku
     void saveAs_game();     //!<Zapisuje obecny stan gry do nowego pliku
     void open_game();       //!<Otwiera i odczytuje stan gry z pliku
-    void close_window();    //!<Zamyka grę
     void open_settings();   //!<Otwiera okno ustawień
     void about_qt();        //!<Otwiera okno "About Qt"
     void about_game();      //!<Otwiera okno "O grze"
     void game_over(int player); //!<Kończy aktualną grę i wyświetla komunikat o zwycięstwie.
-    void setNotSaved();     //!<Ustawia stan gry na niezapisany
+    void setSaved(bool save);//!<Ustawia stan gry
+    void close_game();       //!<Próbuje zamknąć grę - wywołuje close_windows()
+    void setNotSaved();      //!<Ustawia stan gry na niezapisany
 
 protected:
     void closeEvent(QCloseEvent *event);    ///Definiuje działanie w przypadku zamknięcia okna.

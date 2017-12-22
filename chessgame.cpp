@@ -59,8 +59,7 @@ void chessGame::save_game()
                     out << endl;
                     counter=0;
                 }
-                setWindowModified(false);
-                saved=true;
+                setSaved(true);
             }
         }
     }
@@ -83,8 +82,7 @@ void chessGame::saveAs_game()
                 counter=0;
             }
         }
-        setWindowModified(false);
-        saved=true;
+        setSaved(true);
     } else {
         QMessageBox::warning(this,"Błąd!", "Nie udało się odczytać pliku.");
     }
@@ -135,8 +133,7 @@ void chessGame::open_game()
                 panel->clearLost();
                 panel->updateCurrentPlayer();
             }
-            saved = true;
-            setWindowModified(false);
+            setSaved(true);
         }
     }
 }
@@ -169,19 +166,22 @@ void chessGame::new_game()
     } else {
         chessboard->resetChessboard();
         chessboard->generateChessPieces();
-        saved = true;
-        setWindowModified(false);
+        setSaved(false);
     }
 }
 
 void chessGame::closeEvent(QCloseEvent *event) {
-    close_window();
+    if (close_window()==true) {
+        event->accept();
+    } else {
+        event->ignore();
+    }
 }
 
-void chessGame::close_window()
+bool chessGame::close_window()
 {
     if (saved==true) {
-        QApplication::quit();
+        return true;
     } else {
         QMessageBox message;
         message.setWindowTitle("Ostrzeżenie");
@@ -195,12 +195,17 @@ void chessGame::close_window()
         switch (ret) {
         case QMessageBox::Save:
             save_game();
-            QApplication::quit();
+            if (saved==true) {
+                return true;
+            } else {
+                return false;
+            }
             break;
         case QMessageBox::Discard:
-            QApplication::quit();
+            return true;
             break;
         default:
+            return false;
             break;
         }
     }
@@ -240,12 +245,22 @@ void chessGame::game_over(int player)
 
 }
 
+void chessGame::setSaved(bool save)
+{
+    saved = save;
+    setWindowModified(!save);
+}
+
+void chessGame::close_game()
+{
+    close_window();
+}
+
 void chessGame::setNotSaved()
 {
-    saved = false;
-    setWindowModified(true);
-
+    setSaved(false);
 }
+
 
 void chessGame::createMenus()
 {
@@ -294,7 +309,7 @@ void chessGame::createMenus()
     closeAction->setStatusTip("Kliknij by zamknąć grę");
     closeAction->setMenuRole(QAction::QuitRole);
     filemenu->addAction(closeAction);
-    connect(closeAction, SIGNAL(triggered(bool)), this, SLOT(close_window()));
+    connect(closeAction, SIGNAL(triggered(bool)), this, SLOT(close_game()));
 
     QMenu *helpmenu = menuBar()->addMenu("Pomoc");
 

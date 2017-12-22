@@ -26,9 +26,6 @@ void \hyperlink{classchess_game_aff9965791d6a11efb08d6c483db6371b}{save\+As\+\_\
 \mbox{\Hypertarget{classchess_game_a5e8b9a01b5d091579e7f13fe742c85b1}\label{classchess_game_a5e8b9a01b5d091579e7f13fe742c85b1}} 
 void \hyperlink{classchess_game_a5e8b9a01b5d091579e7f13fe742c85b1}{open\+\_\+game} ()
 \begin{DoxyCompactList}\small\item\em Otwiera i odczytuje stan gry z pliku. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classchess_game_a0fec48a8caa52eca9bb109b1ab7d5aa9}\label{classchess_game_a0fec48a8caa52eca9bb109b1ab7d5aa9}} 
-void \hyperlink{classchess_game_a0fec48a8caa52eca9bb109b1ab7d5aa9}{close\+\_\+window} ()
-\begin{DoxyCompactList}\small\item\em Zamyka grę \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classchess_game_af4636d3a148b8e910ac093bf419fbac7}\label{classchess_game_af4636d3a148b8e910ac093bf419fbac7}} 
 void \hyperlink{classchess_game_af4636d3a148b8e910ac093bf419fbac7}{open\+\_\+settings} ()
 \begin{DoxyCompactList}\small\item\em Otwiera okno ustawień \end{DoxyCompactList}\item 
@@ -41,6 +38,12 @@ void \hyperlink{classchess_game_a86245fb64348f772be40001d4f063f03}{about\+\_\+ga
 \mbox{\Hypertarget{classchess_game_a209b5541bf8d34b7f9ff0c48972bf972}\label{classchess_game_a209b5541bf8d34b7f9ff0c48972bf972}} 
 void \hyperlink{classchess_game_a209b5541bf8d34b7f9ff0c48972bf972}{game\+\_\+over} (int player)
 \begin{DoxyCompactList}\small\item\em Kończy aktualną grę i wyświetla komunikat o zwycięstwie. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_game_af9fbb7c1bd1157a851633e026d6d677b}\label{classchess_game_af9fbb7c1bd1157a851633e026d6d677b}} 
+void \hyperlink{classchess_game_af9fbb7c1bd1157a851633e026d6d677b}{set\+Saved} (bool save)
+\begin{DoxyCompactList}\small\item\em Ustawia stan gry. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classchess_game_a2976c11fff9100843c0842504c039c4f}\label{classchess_game_a2976c11fff9100843c0842504c039c4f}} 
+void \hyperlink{classchess_game_a2976c11fff9100843c0842504c039c4f}{close\+\_\+game} ()
+\begin{DoxyCompactList}\small\item\em Próbuje zamknąć grę -\/ wywołuje close\+\_\+windows() \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classchess_game_aa53efb2e6476d9a7445e7a166ebe023b}\label{classchess_game_aa53efb2e6476d9a7445e7a166ebe023b}} 
 void \hyperlink{classchess_game_aa53efb2e6476d9a7445e7a166ebe023b}{set\+Not\+Saved} ()
 \begin{DoxyCompactList}\small\item\em Ustawia stan gry na niezapisany. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -49,7 +52,10 @@ void \hyperlink{classchess_game_aa53efb2e6476d9a7445e7a166ebe023b}{set\+Not\+Sav
 \item 
 \mbox{\Hypertarget{classchess_game_a9d6406de47a97ca52a4016a5caf9f598}\label{classchess_game_a9d6406de47a97ca52a4016a5caf9f598}} 
 {\bfseries chess\+Game} (Q\+Widget $\ast$parent=0)
-\end{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classchess_game_aec7014f597bf46b416324129cd9ed427}\label{classchess_game_aec7014f597bf46b416324129cd9ed427}} 
+bool \hyperlink{classchess_game_aec7014f597bf46b416324129cd9ed427}{close\+\_\+window} ()
+\begin{DoxyCompactList}\small\item\em Zamyka grę \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
