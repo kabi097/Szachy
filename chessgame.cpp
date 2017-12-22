@@ -83,8 +83,6 @@ void chessGame::saveAs_game()
             }
         }
         setSaved(true);
-    } else {
-        QMessageBox::warning(this,"Błąd!", "Nie udało się odczytać pliku.");
     }
 }
 
