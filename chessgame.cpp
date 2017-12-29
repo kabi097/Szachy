@@ -14,6 +14,7 @@ chessGame::chessGame(QWidget *parent)
     setWindowTitle("[*] Szachy");
     saved = true;
     statusBar();
+    setWindowIcon(QIcon(":/others/chess.ico"));
 
     QHBoxLayout *layout = new QHBoxLayout();
 

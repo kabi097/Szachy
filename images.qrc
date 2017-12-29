@@ -23,6 +23,7 @@
     </qresource>
     <qresource prefix="/others">
         <file>Images/arrow.png</file>
+        <file>chess.ico</file>
     </qresource>
     <qresource prefix="/icons">
         <file>Icons/Open file.png</file>
