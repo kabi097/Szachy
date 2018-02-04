@@ -1,4 +1,4 @@
-# chessTest2
+# Chess-In-QT
 Prosta gra w szachy napisana za pomocą biblioteki Qt. 
 Projekt zrealizowano w ramach laboratoriów Języków Programowania Obiektowego (Politechnika Poznańska).
 
